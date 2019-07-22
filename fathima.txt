@@ -1,0 +1,113 @@
+
+1.Write a query to get all umpire details (Name, Country, matches controlled)  order by Name ascending?
+	select umpire_name,umpire_country,matches_controlled from umpire order by umpire_name asc
+
+
+2.Write a query to count the total number of umpires from England and Australia with the column name as “UmpiresTotalCount_EngAus”?
+	select count(*) as ampirestotal_EngAus from umpire where umpire_country='AUSTRALIA' or umpire_country='ENGLAND'
+
+
+3.Write a query to display the umpire_name and matches_controlled by “Gamini Silva”?
+	SELECT matches_controlled from umpire where umpire_name='GAMINI SILVA'
+
+
+4.Write a query to get the Umpire Name who handled the highest number of matches?
+	SELECT umpire_name from umpire where matches_controlled=(select max(matches_controlled) from umpire)
+
+5.Write a query to get the umpire “Names” and “matches controlled” who has handled “more than 30 and less than 60” matches?
+	select umpire_name,matches_controlled from umpire where matches_controlled between 30 and  60
+
+
+6.Write a query to  get umpire name and umpire country whose country name ends with “ia”?
+	select umpire_name,umpire_country from umpire where umpire_country like '%ia'
+
+
+7.Write a query to get umpire_name, umpire_country and reverse the “country name” of the umpires whose name is not starting with “s” with the column name “countryname_reversed”?
+	select umpire_name,umpire_country,reverse(umpire_country) as countryname_reversed from umpire where umpire_name NOT LIKE 's%'
+
+
+8.Write a query to get umpire_name, umpire_country and remove the last letter “a” from “country name” if it ends with “a” for all umpires with the column name “countryname_new”?
+	select umpire_name,umpire_country,if(umpire_country like '%a',left(umpire_country,length(umpire_country)-1),umpire_country) as country_name_new from umpire
+
+
+9.Write a query to count the number of matches played during the period (From “2015-06-10” till  “2016-04-10”) with the column name as “TotalMatches_Period” ?
+	select count(match_date) as TotalMatchesPeriod from matches where match_date between '2015-06-10' and '2016-04-10'
+
+
+10.Write a query to get the total number of matches played on the month April with the column name as “matchescount_april”?
+	select count(match_date) as matchescount_April from matches where month (match_date)=04
+
+
+11.Write a query to get the venue id and the number of times the Matches played in that venue with column name as numberofmatches_played Sort from bigger to smaller count*
+	select venue_id,count(match_id) as NumberofMatches from matches group by venue_id order by match_id desc
+
+
+12.Write a query to display the count of total number of team in Domestic with column name “TotalNoTeams_domestic”
+	select count(team_type) from team where team_type='domestic'
+
+
+13.write a query to list the coach country that start with 'S' and name that ends with 'a' with column name as “country”
+	select coach_country as country from coach where coach_country like 's%' and coach_country like '%a' 
+
+
+14.write a query to display the name and age of the players whose age is greater than 30 and with column name as Name and Agemorethan30  sort by ascending order of age
+	select players_name as name,players_age from players where players_age>30 order by players_age asc
+
+
+15.write a query to display the list of players whose name contains 'am' and also age less than '27' with column name as “Name” and “Age”
+	select players_name,players_age from players where players_name like '%am%' and players_age<27
+
+
+16.write a query to get the umpire_name in UPPERCASE as uppercase,matches_controlled where matches controlled not equal to 20.
+	select upper(umpire_name),matches_controlled from umpire where matches_controlled!=20
+
+
+17.write a query to select the match_id's  which are not played between 2015-2016
+	select match_id from matches where year(match_date) not between 2015 and 2016 
+
+18.write a query to Display the umpire_name as ResultString  from England and remove the spaces between umpirename
+	select replace(umpire_name,' ','') from umpire where umpire_country='ENGLAND'
+
+
+19.Write a query to find the average matches controlled by Australian umpires with column name as “Average”. Round to the smallest integer
+	select FLOOR(avg(matches_controlled)) from umpire where umpire_country='AUSTRALIA'
+
+20.Write a query to select average matches controlled by umpire of  southafrica country make result value truncated to 7 decimals and display column name as truncatedValue
+	SELECT truncate(avg(matches_controlled),7) as truncatedvalue from umpire where umpire_country='SOUTH AFRICA'
+
+
+21.Write a query to get year of birth as yearOfBirth and playername as name whose age is greater than 27
+	select year(curdate())-players_age as yearofbirth,players_name as name from players where players_age>27
+
+
+22.Write a query to get team name that have "o" in the second position  with column name as “Team”
+	select team_name as Team from team where team_name  like '_o%' 
+
+
+23.Write a query to display the player name and qualifier status as Qualified_Status   who having age more than 25. If yes display 'Qualified for Squad'  else 'Not Qualified'
+	select players_name,players_age as qualified_status,if (players_age>25,'Qualified for Squad','Not Qualified') from players
+
+24.write a query to select all the countries from "team" table and “coach" table as 'Coach Country'
+	select coach_country from coach union all select team_country from team
+
+25.Write a query to get non-Indian team country as foreignteamname
+	select team_country as foriegnteamname from team where team_country not like'INDIA%'
+
+
+26.Write a query to get players_name as Name and players_age as Age whose age not between '26 ' to '35'
+	select players_name as name,players_age as age from players where players_age not between 26 and 35
+
+27.write a query to get average of players age as resultant whose age between 25 to 45 and make a resultant value nearest to greatest integer.Eg: if average is 29.343, resultant will be 30
+	select ceil(avg(players_age)) as resultant from players where players_age between 25 and 45
+
+
+28.write a query to get all players and their age with column name as 'concatenation' Display the player name,player age in below format “'Mahendra Singh Dhoni"--->'31'
+	select concat(players_name,'--->',players_age) as concatenation from players
+
+
+29.Write a query to get all details about players, where playername containing characters from ‘v’ to ‘x’
+	select* from players where players_name like '%v%' or players_name like '%w%' or players_name like '%x%'
+
+30.Write a query to select the umpire names against each country who controlled maximum matches . Exclude umpire names whose country name does not starts with ‘S’ in the list.
+With column name as maxmatchcontrolled,country,Nameofumpire
+	select max(matches_controlled) as maxmatchcontrolled,umpire_country as country, umpire_name as nameofumpire,umpire_country from umpire where umpire_country not like 's%' group by umpire_country

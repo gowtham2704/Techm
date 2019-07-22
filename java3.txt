@@ -1,0 +1,340 @@
+6.class Overload
+{
+public int add()
+{
+public int a;
+public int b;
+}
+public int add()
+{
+public String a;
+public int b;
+public int c;
+}
+}
+
+7.class Override
+[
+public void run()
+{
+}
+class Inherited extends Override
+{
+}
+
+8.class Animal
+{
+String legs()
+{
+return "Animal has four legs";
+}
+}
+ class Dog extends Animal
+{
+String  bark()
+{
+return "Dog is barking";
+}
+}
+class BabyDog extends Dog
+{
+void drink()
+{
+System.out.println("BabyDog drinks milk");
+}
+public static void main(String []args)
+{
+	BabyDog bd=new BabyDog();
+	bd.drink();
+	bd.bark();
+	bd.legs();
+}
+}
+
+
+
+9.class Square
+{
+protected int side;
+public Square()
+{
+this.side=6;
+}
+}
+class B extends Square
+{
+int perimeter;
+int area;
+public B()
+{
+super();
+perimeter=4*side;
+System.out.println(perimeter);
+area=side*side;
+System.out.println(area);
+}
+public static void main(String []args)
+{
+B s=new B();
+System.out.println(s.perimeter);
+System.out.println(s.area);
+}
+}
+
+
+10.class Animal
+{
+protected int numOfAnimals;
+public Animal()
+{
+numOfAnimals=2;
+}
+public void legs()
+{
+}
+}
+class Dog extends Animal
+{
+protected int numOfDogs;
+public Dog()
+{
+super();
+numOfDogs=4;
+}
+public void bark()
+{
+}
+}
+class BabyDog extends Dog
+{
+protected int numOfBabyDogs;
+public BabyDog()
+{
+super();
+numOfBabyDogs=5;
+}
+public void drink() 
+{
+}
+}
+class MyMain extends BabyDog
+{
+int total;
+public MyMain()
+{
+	super();
+	this.total = numOfBabyDogs+numOfDogs+numOfAnimals;
+}
+public static void  main(String []args)
+{
+MyMain m=new MyMain();
+System.out.println(m.total);
+}
+} 
+
+
+11.class Flight
+{
+protected String flightName;
+protected int flightno;
+public Flight(String abc,int x)
+{
+}
+}
+class Pilot extends Flight
+{
+static String name;
+public Pilot(String name)
+{
+super("a",1);
+this.name=name;
+}
+String displayDetails()
+{
+return (name.toUpperCase()+flightName.toLowerCase());
+}
+public static void main(String []args)
+{
+Pilot p=new Pilot(name);
+}
+}
+
+
+13. abstract class ClassA
+{
+	int a=10;
+	int b=10;
+public int shape(int a,int b)
+{
+	return a;	
+}
+public int shape1(int a,int b)
+{
+	return a;
+}
+}
+class ClassB extends ClassA
+{
+}
+
+
+15.class Animal
+{
+	String eat()
+	{
+		return "eat";
+}
+}
+class Dog
+{
+	String eat()
+	{
+		return "Dog is eating......";
+	}
+	String test()
+	{
+		return "is";
+	}
+	public static void main(String []args)
+	{
+		Animal a=new Animal();
+		System.out.println(a instanceof Animal);
+	}
+}
+
+
+16.class Animal
+{
+	String eat()
+	{
+		return "eat";
+}
+}
+class Dog
+{
+	String eat()
+	{
+		return "Dog is eating......";
+	}
+	String test()
+	{
+		return "is";
+	}
+	public static void main(String []args)
+	{
+		Dog dog = new Dog();
+		Animal anim = (Animal) dog;
+		anim.eat();
+	}
+}
+
+
+17.interface testinterface
+{
+	void print();
+	void show();
+
+}
+	class ClassA implements testinterface
+	{
+     public void print()
+    {System.out.println("Hello");}
+     public static void main(String args[]){  
+    	 ClassA obj = new ClassA();  
+    	 obj.print();  
+    	  }   
+	}
+18.interface interfaceA
+{
+public int  getArea();
+}
+interface interfaceB
+{
+public int getPerimeter();
+}
+ class A implements interfaceA,interfaceB
+{
+	public A(int l,int b)
+	{
+	}
+	public static void main(String []args)
+	{
+	public int getArea()
+	{System.out.println("l*b");}
+	public int getPerimeter()
+	{System.out.println("l+l+b+b");}
+	A obj=new A(5, 10);
+	obj.getArea();
+	obj.getPerimeter();
+	}
+}
+
+19.abstract class Abs
+{
+	protected String name;
+	public String play()
+	{
+		return name="Guitar";
+	}
+}
+abstract class Abs2 extends Abs
+{
+	protected int numberOfStrings=5;
+}
+public class Guitar extends Abs2
+{
+public Guitar()
+	{
+		
+	}
+	public Guitar(int a)
+	{
+		super();
+		System.out.printf(6+"-and"+name);
+	}
+	public String play()
+	{
+		super.play();
+		return(7+"-and"+name);
+	}
+}
+
+
+21.class Human
+{
+	private int age=70;
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+class Heart extends Human
+{
+	 int display()
+	{
+		return getAge();
+	}
+	public void main(String []args)
+	{
+		Heart h=new Heart();
+		h.display();
+	}
+}
+}
+
+
+24.if(Arrays.equals(array1,array2))
+		{
+		return true;
+		
+	        
+	}
+		return false;
+	}
+
+
+
+

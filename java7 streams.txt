@@ -1,0 +1,322 @@
+1.File f = new File(filePath);
+			int fileCount=f.list().length;
+			return fileCount;
+*********************************************************************************
+2.public static List<String> specificFiles(String filePath) 
+	{
+		
+		 List<String> textFiles = new ArrayList<String>();
+		File dir = new File(filePath);
+		  for (File file : dir.listFiles()) {
+		    if (file.getName().endsWith((".txt"))) 
+		    {
+		   textFiles.add(file.getName());
+		    }
+		  }
+		return textFiles;
+}
+} 
+************************************************************************************
+3.public static boolean pathNameExistsOrNot(String filePath)
+	{
+		boolean flag = false;
+		File f=new File(filePath);
+			if(f.exists())
+			{
+				flag=true;
+			}
+			
+        /*
+         * 
+         * Write a Java program to check whether a file or directory exists or not in the specified path
+         */
+		return flag;
+	}
+
+}
+***************************************************************************************
+5.public static boolean isDirectoryNorFile(String filePath) {
+	boolean flag = false;
+	File f=new File(filePath);
+	if(f.isDirectory() || f.isFile())
+		
+	{
+		flag=true;
+	}
+	/*
+	 * 
+	 * Write a Java program to check whether the given pathname is a directory nor file, return true if any condition satisfies else return false
+	 */
+	return flag;
+
+}
+}
+****************************************************************************************
+ 7.public static int directoryLastModifiedDate(String filePath) {
+		
+		 List<String> textFiles = new ArrayList<String>();
+			File dir = new File(filePath);
+		long t=dir.lastModified();
+		Calendar cal=Calendar.getInstance();
+		cal.setTimeInMillis(t);
+		int c=cal.get(Calendar.DATE);
+		
+		return c;	
+		
+	}
+	
+	public static int directoryLastModifiedMonth(String filePath) {
+		 List<String> textFiles = new ArrayList<String>();
+			File dir = new File(filePath);
+		long t=dir.lastModified();
+		Calendar cal=Calendar.getInstance();
+		cal.setTimeInMillis(t);
+		int c=cal.get(Calendar.MONTH);
+		
+		return c+1;	
+		
+		
+	}
+
+	public static int directoryLastModifiedYear(String filePath) {
+		
+		 List<String> textFiles = new ArrayList<String>();
+			File dir = new File(filePath);
+		long t=dir.lastModified();
+		Calendar cal=Calendar.getInstance();
+		cal.setTimeInMillis(t);
+		int c=cal.get(Calendar.YEAR);
+		return c;	
+		
+	}
+***************************************************************************************
+8.public static long fileSizeInBytes(String filePath) {
+		
+	File f=new File(filePath);
+     long t=0;
+		if(f.exists())
+		{
+			t=f.length();
+	}
+		return t;
+	}
+	public static long fileSizeInKb(String filePath) {
+
+		File f=new File(filePath);
+		long t = 0;
+
+		if(f.exists())
+		{
+
+		t=f.length()/1024;
+	}
+		return t;
+	}
+
+	public static long fileSizeInMb(String filePath) {
+
+		File f=new File(filePath);
+        long t=0;
+		if(f.exists())
+		{
+
+			t=f.length()/(1024*1024);
+	}
+return t;
+}
+}
+***************************************************************************************
+9.public StringBuffer readStreamOfLinesUsingFiles(String in) throws Exception{
+		BufferedReader br=new BufferedReader(new FileReader(in));
+		String line="";
+		StringBuffer s=new StringBuffer();
+		while((line=br.readLine()) !=null)
+		{
+			s.append(line);
+			s.append("\n");
+		}
+		br.close();
+		return s;
+	}
+}
+		
+		//Write a Java program to read a file content line by line.
+*********************************************************************************************
+11.public class UserCode {
+public String data(String input) throws Exception
+{
+
+	StringBuilder sb = new StringBuilder();
+    String strLine = "";
+    String str_data = "";
+    try {
+         BufferedReader br = new BufferedReader(new FileReader(input));
+         while (strLine != null)
+         {
+            if (strLine == null)
+              break;
+            str_data += strLine;
+            strLine = br.readLine();
+            
+        }
+          System.out.println(str_data);
+         br.close();
+
+    } catch (FileNotFoundException e) {
+        System.err.println("File not found");
+    } catch (IOException e) {
+        System.err.println("Unable to read the file.");
+    }
+	return str_data;
+ }
+}
+*************************************************************************************
+		
+12.public class UserCode {
+
+	public static List<String> readLineArray(String input) throws FileNotFoundException
+	{
+		List<String> lines = Collections.emptyList(); 
+		try {
+lines = Files.readAllLines(Paths.get(input), StandardCharsets.UTF_8); 
+}
+		catch (IOException e) {
+			// TODO Auto-generated catch block e.printStackTrace(); }
+
+			}
+		return lines;
+		}
+}
+*****************************************************************************************
+
+13.	public static String findLongestWord(String input) throws FileNotFoundException {
+	
+		String longest_word = "";
+	       String current;
+	       Scanner sc = new Scanner(new File(input));
+	       while (sc.hasNext()) {
+	          current = sc.next();
+	           if (current.length() > longest_word.length()) {
+	             longest_word = current;
+	           }
+	       }
+	         System.out.println("\n"+longest_word+"\n");
+	            return longest_word;
+}
+}
+**************************************************************************************
+15.//Write a Java program to read first 3 lines from a file and store it in array.
+public class UserCode {
+	public static String[] readFirstThreeLines(String input) throws IOException {
+
+		BufferedReader b=new BufferedReader(new FileReader (input));
+		int i=0;
+        String[] str=new String[3];
+        String st="";
+		for(i=0;i<3;i++){
+			if((st=b.readLine()) != null)
+{
+                str[i]=st;
+}
+		}return str;
+	}
+}
+   
+***********************************************************************************
+23.public static int getNumberOfLinesInFile(String filePath) throws IOException {
+	
+		BufferedReader reader = new BufferedReader(new FileReader(filePath));
+		int lines = 0;
+		while (reader.readLine() != null){
+			lines++;
+		}
+		reader.close();
+		return lines;
+
+	}
+
+} 
+*****************************************************************************************
+24.public static String getEmptyDirectoryName(String filePath) {
+		File file = new File(filePath);
+
+	    if (file.isDirectory() ){
+	    	String[] files = file.list(); 
+	   if (files.length > 0) 
+	   {
+	    	 System.out.println("Its not an empty Directory");
+	      }
+	    }
+	return file.getName();
+	   
+}
+	}
+**************************************************************************************
+16. StringBuilder sb = new StringBuilder();
+	        String strLine = "";
+	        try
+	          {
+	             String filename= inputFilePath;
+	             FileWriter inputData = new FileWriter(filename,false); 
+	             //appends the string to the file
+	             inputData.write("Python Exercises\n");
+	             inputData.close();
+	             BufferedReader br = new BufferedReader(new FileReader(inputFilePath));
+
+	}
+}
+**************************************************************************************
+
+ URL u=new URL(urlPath);
+ String []str=new String[5];
+str[0]= u.toString();
+ str[1]=u.getAuthority();
+ str[2]=u.getHost();
+str[3]= u.getPath();
+str[4]= (Integer.toString(u.getPort()));
+URI r=new URI(urlPath);
+str[5]=u.getPath();
+	}
+
+}
+***********************************************************************************
+14.public class UserCode {
+	public static String shortestWord(String input) throws FileNotFoundException {
+		String longest_word = "  ";
+	       String current;
+	       Scanner sc = new Scanner(new File(input));
+	       while (sc.hasNext()) {
+	          current = sc.next();
+	           if (current.length() < longest_word.length()) {
+	             longest_word = current;
+	           }
+	       }
+	         System.out.println("\n"+longest_word+"\n");
+	            return longest_word;
+}
+}
+*********************************************************************************
+10.public StringBuffer readtextfile(String read) throws Exception {
+
+		{
+			StringBuffer b=new StringBuffer();
+			String text=null;
+			if(read.toLowerCase().endsWith("txt"))
+			{
+				FileReader f=new FileReader(read);
+				BufferedReader br=new BufferedReader(f);
+			while((text=br.readLine()) !=null){
+b.append(text);
+b.append(System.lineSeparator());
+			}
+		}
+		else
+		throw new FileNotFoundException("File not Found");
+		return b;
+	}
+}
+}
+**********************************************************************************
+
+
+ 

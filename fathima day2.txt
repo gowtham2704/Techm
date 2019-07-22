@@ -1,0 +1,115 @@
+
+1.Write a query to get total count number of players participated in “Team1 ”  for bating in match 1 with column name alias "players played list  ".
+	select count(team_id) as players_played_list from scorecard where team_id=1 and match_id=1
+
+
+2.Write a query to display all details of venue with venue city “Delhi” and capacity is greater than 50000.
+	select* from venue where venue_city='Delhi' and venue_capacity>50000
+
+
+3.Write a query to display venue id, venue country and  get venue country beginning with “e”
+	select venue_id,venue_country from venue where venue_country like 'E%'
+
+
+4.Write a query to get all the venue_city from venue country "india"
+	select venue_city,venue_country from venue where venue_country='INDIA'
+
+
+5.Write a query to get all distinct locations from tournament table
+	select distinct tournament_location from tournament
+
+
+6.Write a query to get all tournaments held in england
+	select tournament_name from tournament where tournament_location='England'
+
+
+7.Write a query to get all venue names in alphabetical order
+	select venue_name from venue order by venue_name asc
+
+
+8.Write a query to get maximum venue capacity  as 'Maximum Venue Capacity'
+	select max(venue_capacity) as maximumvenuecapacity from venue
+
+
+9.Write a query to get first 3 largest venue capacity with names
+	select venue_name,venue_capacity from venue where venue_capacity order by venue_capacity desc limit 3
+
+
+10.Write a query to get tournament name,starting date of first tournament held
+	select tournament_name,tournament_startdate from tournament where tournament_startdate limit 1
+
+11.Write the number of players in domestic as 'Total Domestic Players'
+	select count(players_type) as Total_domestic_players from players where players_type like '%d%'
+
+12.Write the query select all the city in australia that have venue as  as 'venue cities in Austraila'
+	select venue_city as venue_cities_in_Australia from venue where venue_country='Australia'
+
+
+13.Write to query to select the  venue_name,venue_capacity in highest to lowest venue capacity
+	select venue_name,venue_capacity from venue where venue_capacity order by venue_capacity desc
+
+
+14.Write a query to get venue_country, count of venues in each country  as 'Venue Counts'
+	select venue_country,count(*) as venuecounts from venue group by venue_country 
+
+
+15.Write a query to replace spaces in  tournament names with '_'  as 'Tournament'
+	select replace(tournament_name,' ','_') as tournament from tournament
+
+
+16.Write a query to select sum of total capacity of venues in India  as 'Total Venue Capacity in India'
+	select sum(venue_capacity) as Total_venue_capacity_in_india from venue where venue_country='India'
+
+
+17.Write a query to select all tournament name and starting day (eg:monday) as 'Starting day'
+	select tournament_name,dayname(tournament_startdate) as startingdate from tournament
+
+
+18.Write a query to select tournament_name and  previous date of start_date of all tournaments  as 'Previous Date of Tournament'
+	select tournament_name,date_sub(tournament_startdate,interval 1 day) as previous_date_of_tournament from tournament
+
+
+19.Write a query to print current date and time  as 'current date & time '
+	select current_timestamp() as current_date_and_time
+
+
+20.Write a query to select the tournament_name, start month as 'Start Month' and end month as 'End Month' of tournaments
+	select tournament_name,monthname(tournament_startdate) as startingmonth,monthname(tournament_enddate) as enddate from tournament
+
+
+21.Write a query to select absolute average of venue capacity as 'Obsolute Average Venue Capacity'
+	select abs(avg(venue_capacity)) as Obsolute_Average_Venue_Capacity from venue
+
+
+22.Write a query to SELECT teammapping_id and playerid where domestic or international is null
+	select teammapping_id,players_id from teammapping where teammapping_domestic is null or teammapping_international is null
+
+
+23.Write a query to select avg venue capacity of australia as 'Avg Venue capacity Of Australia'
+	select avg(venue_capacity) from venue where venue_country='Australia'
+
+
+24.Write a query to select venue name where country name not starts with e
+	select venue_name from venue where venue_country not like 'e%'
+
+25.Write a query to select a  venue_country,venue_capacity that have minimum number of venue capacity
+	select venue_country,min(venue_capacity) from venue
+
+26.Write a query to select tournament name contains 't20'
+	select tournament_name from tournament where tournament_name like '%t20%'
+
+
+27.Write a query to display venue country, venue id, venue city and replace venue country instead of India as Hindustan
+	select replace(venue_country,'India','Hindustan') as venue_country,venue_id,venue_city from venue where venue_country='India' 
+
+
+28.Write a query to display count as 'No of Tournament 2015-17' and get count of tournament conducted from 2015-2017
+	select count(year(tournament_startdate)) as No_of_Tournament_2015_17 from tournament where year(tournament_startdate) between 2015 and 2017
+
+
+29.Write a query to display tournament name and  get tournament conducted in England between year 2010 – 2020
+	select tournament_name from tournament where tournament_location='England' or year(tournament_startdate) BETWEEN 2010 AND 2017
+
+
+30.Write a query to count the number of matches played during the period (From “2015-06-10” till  “2016-04-10”) with the column name as “TotalMatches_Period” ?
+	select count(match_id) as TotalMatches_Period from matches where match_date between '2015-06-10' and '2016-04-10'

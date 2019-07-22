@@ -1,0 +1,417 @@
+1.Input : 10,23,45,54,32,14,55,65,56
+Output : 65
+public class UserCode {
+	public static int retrieveMaxFromOddIndex(int[] a) {
+		int max=0;
+		for(int i=1;i<a.length;i=i+2)
+			if(a[i]>max)
+			{
+				max=a[i];
+		
+		 /*Retrieve the max from array which is in a odd-index*/
+
+}
+		return max; 
+	}
+}
+**************************************************************************
+2.if(ip1==13 && ip2!=13 && ip3!=13)
+		  {
+			  return ip3;
+		  }
+	 if(ip2==13 && ip1!=13 && ip3!=13)
+		  {
+			  return ip1;
+		  }
+	if(ip3==13  && ip1!=13 && ip2!=13)
+		  {
+			  return ip2+ip1;
+		  }
+		  if(ip1==13 && ip2==13 && ip3==13)
+		  {
+			  return 0;
+		  }
+		  if(ip1==13 && ip2==13 && ip3!=13){ return ip3;}
+		  if(ip1!=13 && ip2==13 && ip3==13){ return ip1;}
+		  if(ip1==13 && ip2!=13 && ip3==13){ return 0;}
+		  if(ip1!=13 && ip2!=13 && ip3!=13){ return ip1+ip2+ip3;}
+	/*	input1=1 ,input2=2 ,input3=3 --- output=6;
+	    input1=1 ,input2=13,input3=3 --- output=1;
+	    input1=13,input2=2 ,input3=8 --- output=8;
+	    
+	    If value equal to 13,escape the value '13', as well as the next value to 13.
+	    sum the remaining values*/
+		return 0;
+		
+	
+	}
+}
+**************************************************************************************
+3.List<Integer> c = new ArrayList<>(l1);
+		c.removeAll(l2);
+		List<Integer> d = new ArrayList<>(l2);
+		d.removeAll(l1);
+		c.addAll(d);
+		int []res=new int[c.size()];
+		int i=0;
+		for(Integer e:c)
+		{
+			res[i++]=e;
+		}
+		/*
+		 * Write a program to collect numbers from list1 which is not present in list2 and collection numbers from list2 which is not present in list1 and store it in an output array. 
+		 * Eg: 
+		 * Input1={1,2,3,4} 
+           Input2={1,2,3,5}
+
+           Output= {4,5}   
+		 */
+		return res;
+		
+	
+	}
+	
+}
+*************************************************************************************
+4.float res=0;
+		for(int i=0;i<s.length;i++)
+		{
+			if(m1.containsKey(s[i]))
+			{
+				res=res+Float.parseFloat(m1.get(s[i]));
+			}
+		}
+	
+		/*
+		 * Input HashMap HashMap<String,String>
+		 * input1={"mouse":"100.2","speaker":"500.6","Monitor":"2000.23"};
+		 * String[] s={"speaker","mouse"};
+		 * compare the given string array with Keyset in Map add the values of Corresponding Keyset, 
+		 * output in Float value=600.80(500.6+100.2);
+		 */
+				return res;
+	}
+}
+************************************************************************************
+5.public class UserCode {
+	public static int fetchingKeysDivisibleByFour(Map<Integer, String> m1) {
+		int count=0;
+		HashMap<Integer, String> h=new HashMap<Integer, String>(m1);
+		Set<Entry<Integer, String>> entryset =h.entrySet();
+		for(Entry<Integer, String> entry:entryset)
+		{
+			if((entry.getKey())%4 !=0)
+				count++;
+		}
+		return count;
+		/*Input a hashmap. Count the keys which are not divisible by 4 and return. */
+	}
+
+}
+ 
+*********************************************************************************
+6.public int mergeArray(int n1[], int n2[]) {
+int sum=0;
+int []a=new int[100];
+for(int i=0;i<n1.length;i++)
+	for(int j=0;j<n2.length;j++)
+		if(n1[i]==n2[j])
+	{
+		a[i]=n1[i];
+		sum=sum+a[i];
+	}
+
+		/*
+		 * Given two integer arrays. merge the common elements into a new array.
+		 * find the sum of the elements (If no element is common output should
+		 * be 0) input1:{1,2,3,4} input2:{3,4,5,6} logic:{3,4} output:7
+		 */
+
+		return sum;
+
+	} 
+}
+**************************************************************************************
+11.int sum = 0;
+LinkedHashSet<Integer> hm = new LinkedHashSet<Integer>();
+for (int i = 0; i < a.length; i++) {
+hm.add(a[i]);
+}
+Iterator<Integer> lm = hm.iterator();
+while (lm.hasNext()) {
+int b = lm.next();
+if (b % 2 == 0)
+sum = sum + b;
+}
+return sum;
+}
+}
+******************************************************************************************
+23.public static String removalOfDuplicateCharacters(String s1){
+		char[] chars = s1.toCharArray();
+		Set<Character> charSet = new LinkedHashSet<Character>();
+		for (char c : chars) {
+		    charSet.add(c);
+		}
+
+		StringBuilder sb = new StringBuilder();
+		for (Character character : charSet) {
+		    sb.append(character);
+		}
+		return sb.toString();
+		/*Write a Program that accepts a string and removes the duplicate characters.
+Using Linked HashSet
+
+         Input :  aabbcccdcc
+	     Output:   abcd            */
+	}
+
+}
+***************************************************************************************
+7.public static String retrieveMaxScoredStudent(String s1[]) {
+
+		int max=0;
+		String s4=null;
+		for(int i=0;i<s1.length;i++){
+			String s2=s1[i];	
+			StringTokenizer t=new StringTokenizer(s2,"#");
+			String s3=t.nextToken();
+			int n1=Integer.parseInt(t.nextToken());
+			int n2=Integer.parseInt(t.nextToken());
+			int n3=Integer.parseInt(t.nextToken());
+			int n=n1+n2+n3;
+		
+		if(n>=max)
+		{
+			max=n;
+			s4=s3;
+		}
+		}
+		return s4;
+		/* * arraylist of string type which has name#mark1#mark2#mark3 format.
+		 * retrieve the name of the student who has scored max marks(total of
+		 * three) 
+		 * input:{"arun#12#12#12","deepak#13#12#12"} output:deepak*/
+	}
+}
+*********************************************************************************************
+8.HashMap<String, Integer> h1= new HashMap<String, Integer>(m1);
+		HashMap<String, String> h2= new HashMap<String, String>();
+		Set<Entry<String, Integer>> entryset =h1.entrySet();
+		for(Entry<String, Integer> e:entryset)
+		
+		if(e.getValue()>60){
+			h2.put(e.getKey(),"PASS");}
+		
+	/*	Create a Hashmap accepting String and Integer values
+	  
+	    HashMap<String,Integer> h1={“abc”:50,”efg”:70};
+	    
+	    if the mark is less than 60 make it fail else make it pass.
+	    Put the output in ascending order
+	    
+	    HashMap<String,String> h2={“abc”:”fail”,”efg”:”pass”}.
+	    
+	  
+	    */ else{
+		h2.put(e.getKey(),"FAIL");}
+		return h2;
+	}
+}
+******************************************************************************
+20.public static String[] input(Map<String,String> m1 ,String s2) {
+		ArrayList<String>l1=new ArrayList<String>(); 
+		for(Entry<String, String> m:m1.entrySet())
+		{ m.getKey(); 
+		  m.getValue(); 
+		if(m.getValue().equals(s2)) 
+			l1.add(m.getKey());
+		}
+		String[] s= new String[l1.size()]; 
+		for(int i=0;i<l1.size();i++)
+		{ 
+			s[i]=l1.get(i);
+			System.out.println(s[i]);
+		}
+	/*	Write a Program that gets input as Hashmap values.
+	 *  Print the keys that matched the given value in string array.
+	 
+	 *  I/P hashmap<String String>{"ram:hari","cisco:barfi","honeywell:cs","cts:hari"};
+	    I/p 2="hari";
+	    
+		o/p string[]={"ram","cts"};    */
+		return op;
+		
+	}
+
+}
+**********************************************************************************
+19.public static int avgValuesOfOddKeys(Map<Integer, Integer> m1) {
+		int avg=0,sum=0,count=0;
+		for(Map.Entry m:m1.entrySet())
+		{
+			int a=(int)m.getKey();
+			if(a%2!=0)
+			{
+				int d=(int) m.getValue();
+				sum=sum+d;
+				count++;
+			}
+			avg=sum/count;
+		}
+		return avg;
+	}
+}
+		
+	/*	In a hashmap if key is odd then find average of value as integer
+	 * 
+	    ex1:Input={1:4,2:6,4:7,5:9}
+	        output=(4+9)/2
+	    ex2:Input={1:4,3:6,4:7,5:9}
+	        output=(4+6+9)/3
+	    
+	    If all the keys in input are given as even. Then return 0;
+	 */    
+***************************************************************************************
+9.public static String[] loweringCasenReverseofaString(String ip1, char ip2){
+		char[] chars =ip1.toCharArray();
+		StringTokenizer st=new StringTokenizer(ip1,"/");
+		ArrayList<String> tokens=new ArrayList<String>();
+		while(st.hasMoreTokens())
+		{
+			StringBuffer sb=new StringBuffer(st.nextToken().toLowerCase());
+			tokens.add(sb.reverse().toString());
+		}
+		String[] s= new String[tokens.size()]; 
+		for(int i=0;i<tokens.size();i++)
+		{
+		   s[i]=tokens.get(i);
+		}
+		return s;
+	}
+}
+/*		 input-- String input1="AAA/abb/CCC"
+				    char input2='/'
+				    output should be as String[] output1;
+				    output1[]={"aaa","bba","ccc"};
+
+				    operation-- get the strings from input1  using stringtokenizer
+				                reverse each string
+				                then to lower case
+				                finally store it in output1[] string array*/
+************************************************************************************************
+15.public static int additionOfnonPrimeNos(int i, int j){
+		int sum = 0;
+		int k = 0;
+		 
+		for (int l = i; l <= j; l++) {
+			k = 0;
+			for (int m = 1; m <= l; m++) {
+		if (l % m == 0)
+		k++;
+		}
+		if (k != 2) {
+		sum = sum + l;
+		}
+		}
+		 
+		return sum;
+		}
+		}
+	/*
+	 * Retrieve the non-prime numbers within the range of a given input.
+	 * Add-up the non-prime numbers and return the result.
+	 Input Range: 0 to 10
+	 Result: 38*/
+*****************************************************************************************
+16.public class UserCode {
+	public static float avgOfEvenKeyValues(Map<Integer, Float> m1) {
+		 float sum = 0;
+		    int count = 0;
+		    Iterator<Integer> it = m1.keySet().iterator();
+		    while (it.hasNext()) {
+		      int y = it.next();
+		      if (y % 2 == 0) {
+		        sum = (float) (sum + m1.get(y));
+		        count++;
+		      }
+		    }
+		    float d = sum / count;
+		   double r=Math.round(d*100)/100.00;
+		   return (float)r;
+		  }
+		}
+		
+		/*  Input is a map<Integer,Float> {1:2.3,2:5.6,3:7.7,4:8.4}
+		    Get the Even number from keys and find the average of values of these keys.
+		    Answer should be rounded to two numbers after decimal
+		    eg:- if the output number is 15.2499999,it should be rounded upto 15.25
+		 * 
+		 */
+********************************************************************************************				
+18.ArrayList<String> l1=new ArrayList<String>(); 
+HashMap<String,String> m1=new HashMap<String,String>(); 
+ArrayList<String> l2=new ArrayList<String>(); 
+for(String s:temp) 
+l1.add(s.toUpperCase().substring(0, 3)); 
+for(String s:temp) 
+l2.add(s); 
+for(int i=0;i<l1.size();i++) 
+m1.put(l1.get(i),l2.get(i)); 
+System.out.println(m1)	
+return m1;
+}
+************************************************************************************	
+ArrayList<Integer>op1=new ArrayList<Integer>();int k=0;
+		switch(c)
+		{
+		case '+':
+			a.removeAll(b);
+			a.addAll(b);
+          op1=a;
+         break;
+		case '*':
+			a.retainAll(b);
+			op1=a;
+			break;
+		case '-':
+			for(int i=0;i<a.size();i++)
+			{
+				k=0;
+				for(int j=0;j<b.size();j++)
+				{
+					if(a.get(i)==b.get(j))
+						k=1;
+				}
+				if(k==0)
+					op1.add(a.get(i));
+			}
+		 break;
+		}
+		return op1;
+		}}
+***************************************************************************************
+24.public  static String getStr(String[] s1, int ip) {
+		String res="";
+		int n=ip-1;
+		for(int i=0;i<s1.length;i++){
+			String s2=s1[i];
+		if(s2.length()>=ip)
+		{
+			res=res+s2.charAt(n)+"$";
+		}
+		}
+	String val=res.substring(0,res.length()-1);
+	return val;
+		}
+}
+
+	 
+	/* Print the Third character in the array
+	 * 	Input1 ={“ABX”,”ac”,”acd,asd”};
+		Input2 =3;
+		Output1=X$d$d  
+    */
+		
+		
+************************************************************************	  

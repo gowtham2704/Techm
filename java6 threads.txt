@@ -1,0 +1,155 @@
+1.public class UserCode 
+{
+	public int createThread(String Name)
+	{
+		int priority;
+		Thread t=new Thread();
+		t.setName("abi");
+		return t.getPriority();
+		/*
+		 * WAP to create a Thread . Set its name as passed in the argument
+		 * and return its default priority.
+		 * */
+	}
+}
+*******************************************************************************************************
+ 2.Return its STATE as result.
+return tName.getState().toString();
+*******************************************************************************************************
+3.return tName.getName();
+*******************************************************************************************************
+4. return tName.getPriority();
+******************************************************************************************************
+5.int isDaemon=-1;
+		if(tName.isDaemon()) 
+        {  
+              return 1;
+        }  
+          
+        else
+        {  
+           return 0;
+        }  
+*********************************************************************************************************
+6.tName.setName("MYTHREAD");
+	
+		return tName;
+******************************************************************************************************
+8.import java.lang.Thread.State;
+
+public class UserCode 
+{
+	public Thread changeThreadName(Thread tName)
+	{
+		String t=tName.getName();
+	    String u="";
+	    for(int i=0;i<t.length();i++){
+	    	char a=t.charAt(i);
+	    if(a=='A'|| a=='E'|| a=='I'|| a=='O'|| a=='U'|| a=='a'|| a=='e'|| a=='i'|| a=='o'|| a=='u')
+	    {
+		u=u+a;
+	}
+	   tName.setName(u);
+}
+	    return tName;
+	}
+}
+**********************************************************************************************************
+9.if(tName.isAlive())
+*********************************************************************************************************
+10.String t=tName.getName();
+		String s1=t.substring(0,1);
+		String s2=t.substring(t.length()-1);
+		s1=s1+s2;
+		tName.setName(s1);
+		tName.setPriority(10);
+		return tName;
+		
+		
+		/*
+		 * WAP to accept a Thread as Argument ,and change its name to first letter and last letter of the name.
+		 * And change its priority to MAX and return.
+		 * Eg: IF thread Name is "HELLO" change it to "HO" and change the priority to MAX
+		 * */
+	
+	}
+}
+***************************************************************************************************************
+11.		return tName.getThreadGroup().toString();
+
+***********************************************************************************************************
+12.if(tName.getThreadGroup()==Thread.currentThread().getThreadGroup())
+		{
+			return "MAIN THREAD GROUP";
+		}
+		else
+			return "CHILD THREAD GROUP";
+*************************************************************************************************************
+13.int priority=tName.getPriority();
+		if(priority>=1 && priority<5)
+		{
+			return "LOW PRIORITY";
+		}
+		if(priority==5)
+		{
+			return "MEDIUM PRIORITY";
+		}
+		if(priority>=5 && priority<=10)
+		{
+		/*
+		 * WAP to accept a Thread as argument and find its Priority
+		 If the priority is 1 return "LOW PRIORITY".
+		 If the priority is 5 return "MEDIUM PRIORITY".
+		 If the priority is 10 return "MAXIMUM PRIORITY".
+		*/
+		
+		
+		return "MAXIMUM PRIORITY";
+	
+}
+}
+}
+***********************************************************************************************************
+15.public class UserCode extends Thread
+{
+	public List<Integer> fillArray(int limit) throws InterruptedException
+	{
+		List<Integer> out=new ArrayList<Integer>();
+		for(int i=1;i<limit;i++)
+		{
+			out.add(i);
+			Thread.sleep(1000);
+		}
+		/*
+		 * WAP to accept a limit as argument and fill the ArrayList from 1 to that limit.
+		 Rule : Add each element by one second gap. Use Thread.sleep() for the delay.
+		*/
+		
+		return out;
+	}
+}
+********************************************************************************************************
+17.public String findInitialFinalStatus(Thread tName) throws InterruptedException
+	{
+		String statusText=null;
+		State s1=tName.getState();
+		Thread.sleep(5000);
+		State s2=tName.getState();
+		
+		
+		
+		/*
+		 * WAP to accept a Thread as argument .
+		 find the initial status..make it sleep for 5000 milliseconds
+		 get the final status , concatenate with old status with a - and return
+		 Eg :  NEW-TERMINATED 
+		 Eg : RUNNABLE-TERMINATED
+		 * 
+		*/
+		
+		
+		return s1+"-"+s2 ;
+	}
+}
+**********************************************************************************************************
+18.

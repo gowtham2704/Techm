@@ -1,0 +1,175 @@
+1.Write a query to display the Umpire country who  have umpired the match on date “2013-10-20”
+	select umpire_country from umpire u join matches m on u.umpire_id=m.umpire_id where match_date='2013-10-20'
+
+
+
+2.Write a query to count the total number of matches in “T20 World Cup” with column name as “TOTALMATCHES_T20WorldCup” 
+	select count(match_id) as TOTALMATCHES_T20WorldCup from matches m join tournament t on m.tournament_id=t.tournament_id where tournament_name='T20 World Cup'
+
+
+
+3.Write a query to count the total number of matches played by Indian team in all  tournaments with column name as “TotalMatches_India”?
+	select count(team_country) as TotalMatches_India from team t join matches m on t.team_id=m.team2_id where team_country='India'
+
+
+
+4. Write a query to count the total number of matches played by “Kolkata Knight Riders” in “Indian Premier League” with column name as “TotalMatches_KKR”?
+	select count(tournament_id) as TotalMatches_KKR from tournament join team  where team_name='Kolkata Knight Riders' and tournament_name='Indian Premier League'
+
+
+
+5.Write a query to get the date when the match has been held at the venue “Melbourne Cricket Ground”?
+	select match_date from matches m join venue v on m.venue_id=v.venue_id where venue_name='Melbourne Cricket Ground'
+
+
+
+6.Write a query to display players name as “players not out “,team name and get players list who are not out in match1
+	select players_name as playersnotout,team_name from players p join scorecard s join team t on  p.players_id=s.players_id and t.team_id=s.team_id where scorecard_isout=1 and match_id=1
+
+
+
+7.Write a query to display team names who played in match1 with the column name as team1,team2
+	select(select team_name from matches m join team t on m.team1_id=t.team_id where m.match_id=1) as team1,(select team_name from matches m join team t on m.team2_id=t.team_id 
+where m.match_id=1)as team2
+
+
+
+8.Write a query to display players name ,team name,wicket taken who has bowled in match1
+	select players_name,team_name,wicket_taken from players p join team m join wicket w on p.players_id=w.players_id and m.team_id=w.team_id  where match_id=1
+
+
+
+9.Write a query to display players name as 'players' in team 4 in first match (Descending Order)
+	select players_name as players from scorecard s join players p on p.players_id=s.players_id where team_id=4 and match_id=1 order by players desc
+
+
+
+10.Write a query to display average scorecard_runsscored as 'Average Score',team name as 'team' and get average score of team 1 and team 4 in match1
+	select avg(scorecard_runsscored) as AverageScore,team_name as team from scorecard s join team t on t.team_id=s.team_id where s.match_id=1 and s.team_id=1 union 
+select avg(scorecard_runsscored) as AverageScore,team_name as team from scorecard s join team t on t.team_id=s.team_id where s.match_id=1 and s.team_id=4
+
+
+
+11.Write a query to display match id, player id, players name, wicket taken and get player name who has taken more than or equal to 2 wickets in match1
+	select match_id,p.players_id,players_name,wicket_taken from players p join wicket w on p.players_id=w.players_id where wicket_taken>=2 and match_id=1
+
+
+
+12.Write a query to display Umpire table details(Umpire Id, Name, Country, matches controlled) along with Matches table details  (Match_id, match_date, tournament_id, venue_id, umpire_id, team1_id, team2_id) 
+Note: if Umpire has not handled that match then the column from matches table should be null
+	select u.umpire_id,u.umpire_name,u.umpire_country,u.matches_controlled,m.match_id,m.match_date,m.tournament_id,m.venue_id,m.umpire_id,m.team1_id,m.team2_id from umpire u left outer join 
+matches m on u.umpire_id=m.umpire_id
+
+
+13.Write a query to display the Venue details(Venue Name, City, Country) in one column (ex: Sydney Cricket Ground,  Sydney, Australia) where the match has been held on date “2016-04-20” with the column 
+name“Match_VenueDetails”? 
+	select concat(venue_name,',',venue_city,',',venue_country) as Match_VenueDetails from venue v join matches m on v.venue_id=m.venue_id where match_date='2016-04-20'
+14.
+
+
+14.Write a query to get the “Player Name” and “maximum ball faced” who have faced maximum number of balls  in the tournament “Indian Premier League” with the column name as “maxballs_faced”?
+  	select players_name,max(scorecard_noofballsfaced) as maxballs_faced from players p join scorecard s join tournament t  on p.players_id=s.players_id  where tournament_name='Indian Premier League'
+
+
+
+15.Write a query to get all Player details(Player Name, Match ID, Runsscored, Balls faced, IsOut,   Batsman Order) who have scored more than 50runs in the tournaments “T20 World Cup” and “ICC Champions 
+Trophy”?
+	select p.players_name,s.match_id,s.scorecard_runsscored,s.scorecard_noofballsfaced,s.scorecard_isout,s.scorecard_batsmanorder from scorecard s join players p join tournament t join matches m 
+on p.players_id=s.players_id and t.tournament_id=m.tournament_id and m.match_id=s.match_id  where s.scorecard_runsscored>50 and (t.tournament_name='T20 World Cup' or t.tournament_name='ICC Champions Trophy') 
+order by scorecard_runsscored
+
+
+
+16.Write a query to get the Player Names and number of times player is “not out” batsman in the tournament “Indian Premier League” with the column name as “player_name” and” “totalcount_notout” 
+order by count in descending?
+	select players_name,count(scorecard_isout) as totalcount_notout from players p join scorecard s join tournament t join matches m on p.players_id=s.players_id and t.tournament_id=m.tournament_id 
+and m.match_id=s.match_id where t.tournament_name='Indian Premier League' and s.scorecard_isout=1 group by players_name order by totalcount_notout desc
+
+
+
+
+17.Write a query to get the Player Name who have played in the batting order 2 in the 2nd innings of match id-4   with the column name as “PlayerName_BattingOrder2?
+	select players_name as PlayerName_BattingOrder2 from scorecard s join players p on p.players_id=s.players_id where scorecard_batsmanorder=2 and match_id=4 and team_id=1
+
+
+
+18.Write a query to display tournament id, tournament name, venue country, match date and get tournament  conducted in India between 2010-2020
+	select t.tournament_id,tournament_name,venue_country,match_date from tournament t join venue v join matches m on t.tournament_id=m.tournament_id and v.venue_id=m.venue_id where 
+tournament_location='India' or (match_date between 2010 and 2020)
+
+
+
+19.Write a query to display both team names, who played in “India”(Venues under India) and thier count.EG: If   Chennai Super Kings & Royal Challengers Bangalore have played each other twice, 
+then display the count as 2
+	select t1.team_name,t2.team_name,count(m.match_id) as count from matches m join team t1 on t1.team_id=m.team1_id join team t2 on t2.team_id=m.team2_id join venue v on v.venue_id=m.venue_id 
+where venue_country='India' group by match_id  order by t2.team_id or t2.team_id
+
+
+
+20.Write a query to display match id,venue id ,venue country,match date and get matches conducted in India between 2016-04-05 – 2016-04-20
+	select match_id,v.venue_id,venue_country,match_date from venue v join umpire u join matches m on v.venue_id=m.venue_id and u.umpire_id=m.umpire_id where venue_country='India' 
+and match_date between '2016-04-05'and'2016-04-20'
+
+
+
+21.Write a query to display match id,venue id ,venue country,match date and   get matches conducted in Australia between 2015-04-10 – 2015-07-30(using convert function)
+	select match_id,v.venue_id,venue_country,match_date from venue v join umpire u join matches m on v.venue_id=m.venue_id and u.umpire_id=m.umpire_id where venue_country='Australia' 
+and match_date between convert('2015-04-10',date) and convert('2015-07-30',date)
+
+
+
+22.Write a query to display the players teammapping id , players name,players age & players type whose teammappingdomestic id=6 
+	select teammapping_id,players_name,players_age,players_type from players p join teammapping t on p.players_id=t.players_id where t.teammapping_domestic=6
+
+
+
+23.Write a query to get the number of days between the end date of tournament “T20 World Cup” and the start date of tournament  “Indian Premier League”. 
+ Display the days difference in (year, month, days) with the column name as totaldays, year, month and days.(Example:     397, 1 , 1, 1)
+	select abs(timestampdiff(day,(select tournament_startdate from tournament where tournament_name='Indian Premier League' ),(select tournament_enddate from tournament  where tournament_name=
+'T20 WorldCup')))as totaldays,abs(timestampdiff(year,(select(tournament_startdate) from tournament where tournament_name='Indian Premier League') ,(select(tournament_enddate) from tournament  where 
+tournament_name='T20 World Cup'))) as year,abs(timestampdiff(month,(select tournament_startdate from tournament where tournament_name='Indian Premier League' ),(select tournament_enddate from tournament  
+where tournament_name='T20 World Cup'))%12)as month,abs(timestampdiff(day,(select tournament_startdate from tournament where tournament_name='Indian Premier League' ),(select tournament_enddate from 
+tournament  where tournament_name='T20 World Cup'))%365)as day
+
+
+
+24.Write a query to get the Extra runs given in 2nd innings in match4 with the column name   “Extras_SecondInnings” the number should display along with “runs” (ex: 3 runs)
+	select concat(matchsummary_secondinnings-sum(scorecard_runsscored),' runs')as Extras_SecondInnings from scorecard s join matchsummary m on m.match_id=s.match_id  where m.match_id=4 
+and m.matchsummary_battingfirst!=s.team_id
+
+
+
+25.Write a query to get players name and their count of number of 2+ wickets in the matches he  played with column name as (players_id,countof2pluswickets,players_name)
+	select p.players_id,count(wicket_taken) as countof2pluswickets, players_name from players p join wicket w on p.players_id=w.players_id where wicket_taken>=2 group by players_name 
+order by players_id 
+
+
+
+26.Write a query to display team name as “Teams played in T20 world cup” and get teams played in  T20 world cup
+	select team_name as Teams_playedin_T20worldcup from tournament t join team tt join matches m on  t.tournament_id=m.tournament_id and (tt.team_id=m.team1_id or tt.team_id=m.team2_id)  where tournament_name='T20 World Cup' group by team_id
+
+
+
+27.Write a query to get all international players from Australia with column names    teammapping id ,ReplacedTeamName, players id , players name 
+ Hint -  (ReplacedTeamName : Replace the respective team name instead of their "teammapping_international" values)
+	select  teammapping_id,replace(team_country,teammapping_international,team_name) as  replacedteamname,p.players_id,players_name from players p join teammapping t join team tt 
+on p.players_id=t.players_id and tt.team_id=t.teammapping_international  where  team_country='Australia'
+
+
+
+28.Write a query to list all the Indian Team players with columns players id ,players name, wicket_taken. If no wickets show null.(use right join)
+	select a.players_id,players_name,if(a.players_id!=b.players_id,null,b.wicket_taken) as wicket from players a  join  wicket w  join wicket b on  a.players_id<=b.players_id join 
+team c on c.team_id=b.team_id where team_name='India' group by players_name order by players_id
+
+
+
+29.Write a query to display match id ,players name ,run scored of the players who has scored less than 150 in match 7   (in desc order of players_id) & (using group concat function resulting in multi row)
+	select group_concat('inmatch',match_id,' ',players_name,' ','have_scored ',scorecard_runsscored) from scorecard s join players p on p.players_id=s.players_id where match_id=7 
+and scorecard_runsscored<150 group by scorecard_runsscored order by s.players_id desc
+
+
+
+30.Write a query to cehck all matches in the venue country “England” and display result as 'max won category' ,  check and show "maximum won category" whether -first batting /first bowling  
+(Compare the winning teams)
+	select max(if(matchsummary_battingfirst=matchsummary_winningteam,'batting','bowling')) as maxwon_category from matchsummary mm join venue v join matches m on v.venue_id=m.venue_id 
+and m.match_id=mm.match_id where venue_country='England'

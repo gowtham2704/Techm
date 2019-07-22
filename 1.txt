@@ -1,0 +1,30 @@
+
+public class FlightManagement {
+	         public int ticktno=100;
+			 public int boardingno=88667;
+			 public String flightname="Indigo";
+			 public int  amount=80000;
+			 public void detailsOfFlight()
+			 {		 
+}
+			 public String displayDetails()
+			 {
+				 return (boardingno+flightname+amount+ticktno);
+				
+			 }
+} 
+
+
+7.public class Fieldcode {
+	public int  x = 23; 
+		      protected String companyname="DSRC";
+		       private int y =4;
+public String deleteEmployee()
+{
+return companyname;	
+}
+public int sum(int sum)
+{
+	return sum=x+y;
+}
+}

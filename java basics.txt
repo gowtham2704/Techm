@@ -1,0 +1,28 @@
+What is the purpose of JDK?
+The Java Development Kit (JDK) is a software development environment used for developing Java applications and applets. 
+It includes the Java Runtime Environment (JRE), an interpreter/loader (java), a compiler (javac), an archiver (jar), a documentation generator (javadoc) and other tools needed in Java development.
+
+Do I need JDK or JRE?
+If you want to run Java programs, but not develop them, download the JRE. If you want to develop Java applications, download the Java Development Kit, or JDK. 
+The JDK includes the JRE, so you do not have to download both separately.
+
+What is meant by JRE?
+The Java Runtime Environment (JRE) is a set of software tools for development of Java applications. It combines the Java Virtual Machine (JVM), platform core classes and supporting libraries. 
+JRE is part of the Java Development Kit (JDK), but can be downloaded separately.
+
+The difference between JDK and JRE is that JDK is the software development kit for java while JRE is the place where you run your programs.
+
+Class loaders are responsible for loading Java classes during runtime dynamically to the JVM (Java Virtual Machine). Also, they are part of the JRE (Java Runtime Environment). Hence, the JVM doesn’t need to know 
+about the underlying files or file systems in order to run Java programs thanks to class loaders.
+Also, these Java classes aren’t loaded into memory all at once, but when required by an application. This is where class loaders come into the picture. 
+They are responsible for loading classes into memory.
+
+
+Java class loaders can be broadly classified into below categories:
+
+Bootstrap Class Loader
+Bootstrap class loader loads java’s core classes like java.lang, java.util etc. These are classes that are part of java runtime environment. Bootstrap class loader is native implementation and so they may differ across different JVMs.
+Extensions Class Loader
+JAVA_HOME/jre/lib/ext contains jar packages that are extensions of standard core java classes. Extensions class loader loads classes from this ext folder. Using the system environment propery java.ext.dirs you can add ‘ext’ folders and jar files to be loaded using extensions class loader.
+System Class Loader
+Java classes that are available in the java classpath are loaded using System class loader.

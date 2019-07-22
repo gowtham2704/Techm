@@ -1,0 +1,545 @@
+1.Write a program to accept two numbers and store in variables namely 'a' and 'b'.  Do the division operation (ie., a/b) and store it in result variable and return the same.   Handle the program in try-catch block if value in denominator happens to be zero and
+ display appropriate exception handling messagepublic class UserCode 
+{
+	public int divide(int a,int b)
+	{
+		int res=0;
+		try
+		{
+			res=a/b;
+		}
+		catch(ArithmeticException e)
+		{
+			System.out.println("the division of two numbers;");
+		}
+		return res;
+}
+}
+
+***************************************************************************************
+
+2.public class UserCode 
+{
+
+	public char fourthLetter(String input)
+	{
+		char ch='z';
+		try
+		{
+		ch =input.charAt(3);
+		}
+		catch(Exception e)
+		{
+			System.out.println("the 4th character in string:");
+		}
+		/*
+		 *WAP to accept a string and return the 4th letter of the string.
+		 *If exception raises handle it and return the character 'z'
+		 * */
+				
+		
+		return ch;
+	}
+}
+
+******************************************************************************
+3.public class UserCode {
+	public int divide(int a, int b) throws Exception{
+		int res = 0;
+	    res=a/b;
+	    if(b<0)
+	    {
+	    	throw new Exception("the division is");
+	    }
+	    return res;
+	}
+}
+
+************************************************************************************
+
+4.public class UserCode 
+{
+	public String verfiyAge(int age) throws Exception 
+	{
+		
+		if(age<18)
+		{
+			throw new Exception("Age is less than 18");
+		}
+		
+		/*
+		 * WAP to accept an age and if the age is less than 18 , raise
+		 * an exception called AgeMinorException with custom message "Age is less than 18".
+		 * else return "Age Verified".
+		 * */
+		
+		
+		return "Age Verified";
+	}
+}
+
+*********************************************************************************************
+
+6.import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class UserCode 
+{
+	public String validatePassword(String pass) throws Exception 
+	{
+		Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
+		Matcher matcher=pattern.matcher(pass);
+		if(matcher.matches())
+		{
+			throw new Exception("Password Too Weak");
+		}
+		/*
+		 * WAP to accept a password as argument and check for special characters in it.
+		 * if not found raise a user defined exception PasswordWeakException with custom message
+		 * "Password Too Weak" else return "Valid".
+		 * */
+		
+		return "Valid";
+	 
+		
+	}
+} 
+
+************************************************************************************
+9.public class UserCode 
+{
+	public int countVow(String str) throws Exception
+	{
+		int count = 0;
+		for (int i = 0; i < str.length(); i++)
+        {
+            if (str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i'
+                    || str.charAt(i) == 'o' || str.charAt(i) == 'u'|| str.charAt(i) == 'A' || str.charAt(i) == 'E' || str.charAt(i) == 'I'
+                            || str.charAt(i) == 'O' || str.charAt(i) == 'U')
+            {
+                count++;
+    }
+            }
+            if(count==0)
+            {
+            	throw new Exception ("VowelNotFoundException");
+            }
+		return count;
+	}
+}
+
+****************************************************************************
+class InvalidAgeException extends Exception
+{
+	public InvalidAgeException(String message)
+	{
+		super(message);
+	}
+}
+class verifyAge
+{
+	void verifyAge(int age) throws InvalidAgeException
+	{
+		if(age<18)
+			throw new InvalidAgeException("Invalid AGE");
+			System.out.println("Age Verified");
+		}
+	}
+class UserAge
+	{
+	public static void main(String[] args)
+	{
+		verifyAge v=new verifyAge();
+		try
+		{
+			v.verifyAge(11);
+		}
+		catch(InvalidAgeException e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+		
+}
+**********************************************************************************
+
+7.public class UserCode 
+{
+	public String validatePassword(String pass)throws Exception
+	{
+
+		int count1=0;
+		int count2=0;
+		for(int i=0;i<pass.length();i++)
+		{
+		char c=pass.charAt(i);
+		if(Character.isDigit(c))
+		count1++;
+		if(Character.isUpperCase(c))
+		count2++;
+		}
+		if(count1==1 && count2==1)
+		return "Valid";
+		else
+		throw new Exception("Password Too Weak");
+	}
+}
+***************************************************************************************
+8.public class UserCode 
+		{
+			public String validatePassword(String pass)throws Exception
+			{
+
+				int count1=0;
+				int count2=0;
+				for(int i=0;i<pass.length();i++)
+				{
+				char c=pass.charAt(i);
+				if(Character.isDigit(c))
+				count1++;
+				if(Character.isUpperCase(c))
+				count2++;
+				}
+				if(count2==0)
+				{
+					throw new Exception( "Upper Case Not Found");
+				}
+				if(count1==0)
+				{
+					throw new Exception("Digit Not Found");
+				}
+				else return "Valid";
+
+		}
+		}
+	
+		/*
+		 * WAP to accept a password as argument and check for one digit and one upper case letter in it.
+		 * If the Upper Case letter not found raise a user defined exception NoUppercaseException with custom message
+		 * "Upper Case Not Found".
+		 * If the Digit is not found raise a user defined exception NoDigitException with custom message
+		 * "Digit Not Found".
+		 * Else return "Valid"*/
+****************************************************************************************************************
+10.public class UserCode 
+{
+	public int convertToNumber(String input) throws Exception
+	{
+		int num=0;
+		try
+		{
+			num=Integer.parseInt(input);
+		}
+		catch(NumberFormatException e)
+		{
+			throw new NumberFormatException ("String Contain Numbers");
+		}
+     return num;
+}
+	}
+
+
+/*Write a program to accept a string and convert it into number. If the input string contains characters, 
+“NumberFormatException” will be raised handle it in catch block and re throw it with message 
+"String Contain Numbers”*/ 
+****************************************************************************************************
+11.Write a program to accept two numbers and store in variables.  The denominator should be zero and perform division operation which will throw “ArithmeticException”.  Handle the exception in catch block and rethrow the same.
+
+Note: The return type of the method in “usercode” should be the name of the exception that is handled.		
+		    
+	          
+
+**********************************************************************************************
+12.
+Write a program to check the substring (2,5) of a given word. If it starts with “v” then throw StringIndexOutOfBoundsException, else return the substring value.public class UserCode {
+	
+	public String checkEligibilty(String data){
+ 
+		String s=data.substring(2,5);
+		char ch=s.charAt(0);
+		if(ch=='v')
+		{
+			throw new java.lang.StringIndexOutOfBoundsException();
+		
+		}
+		else
+		//Write a program to check the substring(2,5) of a given word. 
+		//If it starts with “v” then throw StringIndexOutOfBoundsException.Else return the substring value.
+		
+		return s;	
+	   }  
+}
+*******************************************************************************************************
+13.public class UserCode 
+{
+	public String dateCheck(int day,int month,int year) throws Exception
+	{
+			if(day<0)
+			{
+			throw new Exception ("Negative Day");
+		}
+		 if(day==0)
+		{
+			throw new Exception ("Invalid Day");
+		}
+		
+		if(day>31)
+		{
+			throw new Exception ("Day Limit Exceeded");
+		}
+		else
+		/*
+		 * WAP to accept Day ,Month and Year and verify it.
+		 * If the Day is -ve, raise DateException with message "Negative Day"
+		 * If the Day is 0 ,raise DateException with message "Invalid Day"
+		 * If the Day is greater than 31 ,raise DateException with message "Day Limit Exceeded"
+		 * Else return "Day is Valid".
+		 * */
+		
+		return "Day is Valid";
+	}
+}
+**************************************************************************************************
+14.public class UserCode 
+{
+	public String dateCheck(int day,int month,int year) throws Exception
+	{
+					if(month<0)
+					{
+					throw new Exception ("Negative Month");
+				}
+				 if(month==0)
+				{
+					throw new Exception ("Invalid Month");
+				}
+				
+				if(month>12)
+				{
+					throw new Exception ("Month Limit Exceeded");
+				}
+				else
+				
+				return "Month is Valid";
+			}
+		}
+		/*
+		 * WAP to accept Day ,Month and Year and verify it.
+		 * If the Month is -ve, raise DateException with message "Negative Month"
+		 * If the Month is 0 ,raise DateException with message "Invalid Month"
+		 * If the Month is greater than 12 ,raise DateException with message "Month Limit Exceeded"
+		 * Else return "Month is Valid".
+		 * */
+************************************************************************************************************
+15.public class UserCode 
+{
+	public String dateCheck(int day,int month,int year) throws Exception
+	{
+		if(year<0)
+		{
+		throw new Exception ("Negative Year");
+	}
+	 if(year==0)
+	{
+		throw new Exception ("Invalid Year");
+	}
+	
+	if(year>2017)
+	{
+		throw new Exception ("Year Limit Exceeded");
+	}
+	else
+	
+	return "Year is Valid";
+}
+}
+		/*
+		 * WAP to accept Day ,Month and Year and verify it.
+		 * If the Year is -ve, raise DateException with message "Negative Year"
+		 * If the Year is 0 ,raise DateException with message "Invalid Year"
+		 * If the Year is greater than 2017 ,raise DateException with message "Year Limit Exceeded"
+		 * Else return "Year is Valid".
+		 * */
+********************************************************************************************************
+16.public class UserCode 
+{
+	public String dateCheck(int day,int month,int year) throws Exception
+	{
+				if(day>31 || month>12 || year>2020)
+				{
+				throw new Exception("Invalid Date");
+			}
+			 if((year%4)==0 && (year%100)!=0 || (year%400)==0)
+			 {
+					 if(month==2 && day>29)
+			{
+				throw new Exception("Leap Year Day Error");
+			}
+			
+			
+	}
+			 return "Valid Date";
+}
+}
+
+		/*
+		 * WAP to accept Day ,Month and Year and verify it.
+		 * If the Day exceeds 31 / month exceeds 12 / Year exceeds 2020 raise an exception DateException
+		 * with message "Invalid Date"
+		 * If the year is a leap year and month passed is 2 ,then check for day,whether it exceeds 29 or not.
+		 * If the day exceeds 29 raise DateException with message "Leap Year Day Error"
+		 * else display "Valid Date".
+		 * */
+		 
+************************************************************************************************************
+17.
+Write a program to find the sum of numbers passed as an array.  If the array contains -ve numbers raise MyException with message "Array Have Negatives".   If the array contains 0s raise MyException with message "Array Have Zeros", else return the sum.public class UserCode 
+{
+	public int findSum(int array[]) throws Exception
+	{
+		int sum=0;
+		for(int i=0;i<array.length;i++){
+		if(array[i]<0)
+		{
+			throw new Exception("Array Have Negatives");
+		}
+		if(array[i]==0)
+		{
+			throw new Exception("Array Have Zeros");
+		}
+		
+		/*
+		 * WAP to find the sum of numbers passed as an array.
+		 * If the array contains -ve numbers raise MyException with message "Array Have Negatives"
+		 * If the array contains 0s raise MyException with message "Array Have Zeros"
+		 * Else return the sum.
+		 * */	
+		sum=sum+array[i];
+		}
+		return sum;
+}
+}
+******************************************************************************************************************************
+18.public class UserCode 
+{
+	public int countVow(String input) throws Exception
+	{
+		int count=0;
+		for(int i=0;i<input.length();++i)
+		  {
+		   switch(input.charAt(i))
+		   {
+		    case 'a':
+		    case 'A':
+		    case 'e':
+		    case 'E':
+		    case 'i':
+		    case 'I':
+		    case 'o':
+		    case 'O':
+		    case 'u':
+		    case 'U': 
+		    	count++;  
+		   }
+		   if(count==0)
+		   {
+			   throw new Exception();
+		   }
+		/*
+		 *WAP to accept a string and find maximum repeated vowel count.
+		 *	If no vowels found in it ,raise an exception called VowelNotFoundException
+		 *sample:  tomatto  output : 2
+		 * */
+				
+	}
+		return count;
+	}
+}
+****************************************************************************************************************
+19.public class UserCode 
+{
+	public String palindromeWord(String input) throws Exception
+	{
+		String res="";
+		for(int i=0;i<input.length();i++)
+		{
+		char c=input.charAt(i);
+		if(Character.isDigit(c))
+				{
+			throw new Exception("Invalid String");
+				}
+		}
+		int length=input.length();
+		for(int i1=length-1;i1>=0;i1--)
+		res=res+input.charAt(i1);
+		if(input.equals(res)){
+			return "Pallindrome";
+		}
+		/*
+		 *WAP to accept a string and check for pallindrome.
+		 *If any digit found inside the string throw an Exception named InvalidStringException.
+		 *with message "Invalid String"
+		 *
+		 *If the string is a pallindrome return "Pallindrome"
+		 *else "Not a Pallindrome"
+		 *
+		 * */
+		return "Not a Pallindrome";}
+}
+*****************************************************************************************************************
+21.public class UserCode {
+
+	/*Try to convert the last name field to upper case and concatenate with Firstname 
+	 if we assign null values to any variable and access those variable,
+	Handle the correct exception in try-catch block*/
+
+	//Note : Perform String operation mentioned above and return String.
+
+	public String check(String fname, String lname, int rollnum)throws Exception {
+		
+		String output=null;
+		String s=lname.toUpperCase();
+		output=s.concat(fname);
+		if(fname=="null" && lname=="null")
+		{
+		throw new Exception();
+		}
+		else
+		return output;
+	}	
+}
+********************************************************************************************************************
+23.import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
+
+
+public class UserCode {
+
+	
+		public static String extensionString(String s1) throws Exception 
+		{
+			String s2=null;
+			if(s1.contains("jpeg"))
+			{
+				return "jpeg";
+			}
+		if(!s1.contains("."))
+		{
+			throw new Exception("NotValidFormat");
+		}
+		else
+		{
+		throw new Exception("NotFileExtension");
+		}
+}
+}
+
+			/*
+			 * Write a program to find the extension of a given file name and return it
+			  if extension contain jpeg, return "jpeg", else,raise an exception called “ExtensionNotFoundException” with custom message "NotFileExtension" 
+			  and string not contains "." throw "NoSuchElementException" with custom message "NotValidFormat".
+			 */
+			
+*******************************************************************************************************************************
+20.

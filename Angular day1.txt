@@ -1,0 +1,300 @@
+1.<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+  <div style="Width:100%;"><br>
+  <input id="date" #date type="date">
+  <button btmCheckBox value="multi" id="multi" (click)="getage(date.value)">Get age</button>
+  </div><br><br>
+  <div *ngIf="count ==true" id="age">
+    Your Age is {{age}}
+    </div>
+    </div>
+
+export class AppComponent {
+  title = 'Age!';
+  count=false;
+  age:number;
+  getage(value)
+  {
+  var today=new Date();
+  var birthDate=new Date(value);
+  var age=today.getFullYear()-birthDate.getFullYear();
+  var m=today.getMonth()-birthDate.getMonth();
+  if(m<0 || m==0 && today.getDate()<birthDate.getDate()){
+  age--;
+  }
+  this.age=age;
+  this.count=true;
+  }
+}
+********************************************************************************************************
+2.@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.styl']
+})
+export class AppComponent {
+  title = 'Calculator';
+  mul: number;
+  calculate(first:number, second:number) {
+   this.mul = first*second;
+  }
+}
+
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+    </h1>
+    <input type="number" id="textbox1" placeholder="textbox1" class="form-control" #first><br>
+    <br>
+    <input type="number" id="textbox2" placeholder="textbox2" class="form-control" #second><br><br>
+    <button type="submit" id="multi" (click)='calculate(first.value, second.value)'>Multiply</button>
+
+  <h4>{{mul}}</h4>
+  </div>
+********************************************************************************************************
+3.@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.styl']
+})
+export class AppComponent {
+  title = 'Calculator';
+  mul: number;
+  calculate(first:number, second:number) {
+   this.mul = first*second;
+  }
+   calculatediv(first:number, second:number) {
+   this.mul=first/second;
+  }
+}
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+    </h1>
+    <input type="number" id="textbox1" placeholder="textbox1" class="form-control" #first><br>
+    <br>
+    <input type="number" id="textbox2" placeholder="textbox2" class="form-control" #second><br><br>
+    <button type="submit" id="multi" (click)='calculate(first.value, second.value)'>Multiply</button>
+    <button type="submit" id="div" (click)='calculatediv(first.value, second.value)'>Divide</button>
+  <h4>{{mul}}</h4>
+  </div>
+*********************************************************************************************************
+4.home.component.ts
+
+import { Component } from '@angular/core';
+@Component({
+template : '<div><h3>welcome</h3></div>'
+})
+export class HomeComponent {
+}
+
+app.module.ts
+
+import { HomeComponent } from './home.component';
+@NgModule({
+declarations: [
+HomeComponent
+],
+
+app-routing.module.ts
+
+export const routes:Routes=[{path:'',component:HomeComponent}]
+
+@NgModule({
+
+app.component.html
+
+<router-outlet></router-outlet>
+
+************************************************************************************************************
+5.app.component.html
+
+<div style="text-align:right">
+<h1>
+{{title}}
+</h1> 
+</div> 
+username<input type="text" id="uname" #uname><br>
+password<input type="password" id="password"><br>
+mobile<input type="number" id="mobile"><br>
+email<input type="email" id="email"><br>
+<button button id="button" (click)='gethome(uname.value)'>register</button>
+<div class="outer-outlet"> 
+<router-outlet></router-outlet>
+</div>
+
+app.component.ts
+
+export class AppComponent {
+title="Welcome to Q2";
+public name:string;
+constructor(private router:Router){}
+gethome(value){
+this.name=value;
+this.router.navigateByUrl("\register");
+localStorage.setItem("user",this.name);
+}
+}
+
+app-routing.module.ts
+
+export const routes:Routes=[{path:'\register',component:RegisterComponent}]
+@NgModule({
+
+register.component.ts
+
+export class RegisterComponent {
+public name:string;
+constructor() { 
+this.name= localStorage.getItem("user");
+}
+}
+
+register.component.html
+
+<p>
+"Welcome systemadmin {{name}}" 
+</p>
+************************************************************************************************************
+6.app.component.ts
+
+export class AppComponent  {
+  title="Welcome to Q3";
+}
+
+app.component.html
+
+<div style="text-align:left">
+   <h1>
+     {{title}}
+   </h1>     
+</div>   
+ <a [routerLink]="['login']">register</a>  
+ <div class="outer-outlet">     
+<router-outlet></router-outlet>
+</div>
+
+
+app-routing.module.ts
+
+export const routes:Routes=[{path:'login',component:LoginComponent}]
+@NgModule({
+
+login.component.html
+
+<div style="text-align:left">
+  username<input type="text" id="uname" #uname><br>
+  password<input type="password" id="password"><br>
+  mobile<input type="number" id="mobile"><br>
+  email<input type="email" id="email"><br>
+ <button button id="button" (click)="gethome(uname.value)">register</button>
+ </div>
+
+login.component.ts
+
+ gethome(value){
+    alert("Registered Successfully"+value);
+  
+  }
+}
+*******************************************************************************************************
+9.app.component.ts
+export class AppComponent {
+title="Welcome to Q9";
+}
+
+app.component.html
+<div style="text-align:center">
+<h1>
+{{title}}
+</h1> 
+<a [routerLink]="['frstlink']">Login</a> 
+<div class="outer-outlet"> 
+<router-outlet></router-outlet>
+</div>
+</div>
+
+app-routing.module.ts
+export const routes:Routes=[{path:'frstlink',component:LoginComponent}]
+@NgModule({
+
+login.componenet.ts
+export class LoginComponent {
+count=false;
+name:string;
+gethome(value){
+this.name=value;
+this.count=true;
+}
+}
+
+login.componenet.html
+<div style="text-align:center">
+Name<input type="text" id="textbox1" #textbox1>
+Password<input type="password" id="textbox2">
+<button button id="button" (click)="gethome(textbox1.value)">Login</button>
+<div *ngIf="count ==true" id="name">
+Welcome {{name}}
+</div>
+</div>
+***********************************************************************************
+10.app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Enter the number to convert into Fahrenheit<input type="number" id="text" #text><br>
+<button id="result" (click)="gethome(text.value)">convert</button>
+the Fahrenheit of {{text.value}}c is:{{num}}F
+</div>
+
+app.componenet.ts
+export class AppComponent {
+title="Welcome to Fahrenheit!"
+num:number;
+gethome(value){
+this.num=value*9/5+32;
+}
+}
+**************************************************************************************************
+11.app.component.ts
+export class AppComponent {
+title="Welcome to Percentage!"
+num:number;
+gethome(value){
+this.num=value*100;
+}
+}
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Enter the number to convert into Percentage<input type="number" id="text" #text>
+<button id="result" (click)="gethome(text.value)">convert</button><br>
+the Percentage of{{text.value}} is:{{num}}
+</div>
+
+**************************************************************************************************
+12.app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Enter Age<input type="number" id="text" #text><br>
+<button id="result" (click)="gethome(text.value)">Press</button><br>
+{{num}}
+</div>
+
+
+app.component.ts
+export class AppComponent {
+title="Welcome to vote!"
+num:string;
+gethome(value){
+if(value>17){
+this.num="Eligible";}
+else{
+this.num="Not Eligible";
+}
+}
+}
+****************************************************************************************************
+

@@ -1,0 +1,451 @@
+
+
+1.Create an Angular application with title 'Calculator'.
+Create a form with two textboxs with id as 'textbox1' and 'textbox2'.
+Create 4 buttons namely 'Multiply','Divide','Add','Subtract'.
+If we enter two values and click any button the respective result should be displayed.The result should be created with id as 'result'.
+
+Expected Screens:
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+<input type="number" placeholder="textbox1" class="form-control" #first><br><br>
+<input type="number" placeholder="textbox2" class="form-control" #second><br><br>
+<button type="submit" id="multi" (click)='calculatemulti(first.value,second.value)'>Multiply</button>
+<button type="submit" id="div" (click)='calculatediv(first.value,second.value)'>Divide</button>
+<button type="submit" id="add" (click)='calculateadd(first.value,second.value)'>Add</button>
+<button type="submit" id="sub" (click)='calculatesub(first.value,second.value)'>Subtract</button>
+<h4>{{res}}</h4>
+</div>
+
+app.componenet.ts
+export class AppComponent {
+title="Calculator"
+res:number;
+calculatemulti(first:number,second:number)
+{
+this.res=first*second;
+}
+calculatediv(first:number,second:number)
+{
+this.res=first/second;
+}
+calculateadd(first:number,second:number)
+{
+this.res=first+second;
+}
+calculatesub(first:number,second:number)
+{
+this.res=first-second;
+}
+}
+**************************************************************************************************************
+2.Create an Angular application with title 'Calculator'.
+Create a form with two textboxs with id as 'textbox1' and 'textbox2'.
+Create two button namely 'Multiply','Divide','Subtract'.
+If we enter two values and click any button the respective result should be displayed.The result should be created with id as 'result'.
+
+Expected Screens:
+
+*******************************************************************************************************************
+
+3.Create an angular application to display the country and city name based on the selected item.
+Create the following textfields:
+1. dropdown for country with id as "get".
+2. dropdown for city with id as "put"
+Display the result with id as "result" as shown in the given expected screens.
+Expected Screens:
+
+app.component.html
+
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Select your fav Country<br><br>
+<select (change)=" countryshow ($event)" #v>
+<option value="" >--Select--</option>
+<option value="India">India</option>
+<option value="China">China</option>
+<option value="Australia">Australia</option>
+</select>
+</div>
+<br>
+<br>
+<div *ngIf="count" style="text-align-last:center">
+Select your fav City<br><br>
+<select (change)=" cityshow ($event)" #w>
+<option value="">--Select--</option>
+<option value="Chennai">Chennai</option>
+<option value="Beijing">Beijing</option>
+<option value="Sydney">Sydney</option>
+</select>
+</div>
+<br>
+<br>
+<div *ngIf="show" style="text-align-last:center">
+Your fav country: {{country}}<br><br>
+Your fav city: {{city}}
+</div>
+
+app.component.ts
+
+export class AppComponent {
+title="Select your fav Country and City"
+public count:boolean;
+public show:boolean;
+public country:string;
+public city:string;
+countryshow(event:any)
+{
+this.country=event.target.value;
+this.count=true;
+}
+cityshow(event:any)
+{
+this.city=event.target.value;
+this.show=true;
+}
+}
+
+
+*********************************************************************************************************
+
+4.Develop an angular application to convert the given number to Milli,centi,Deci,Deca,Hecto,Kilo
+Create a textbox with id as "meter" and 6 buttons named as Milli,Centi,Deci,Deca,Hecto,Kilo respectively.
+Display the result with id as "result" as shown in the given expected screens.
+Expected Screens:
+
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+<input type="number" placeholder="textbox2" class="form-control" #first><br><br>
+<button type="submit" id="milli" (click)='calculatemilli(first.value)'>Milli</button>
+<button type="submit" id="centi" (click)='calculatecenti(first.value)'>Centi</button>
+<button type="submit" id="deci" (click)='calculatedeci(first.value)'>Deci</button>
+<button type="submit" id="deca" (click)='calculatedeca(first.value)'>Deca</button>
+<button type="submit" id="hecto" (click)='calculatehecto(first.value)'>Hecto</button>
+<button type="submit" id="kilo" (click)='calculatekilo(first.value)'>Kilo</button>
+<h4>{{res}}</h4>
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Conversion from meter to any"
+res:number;
+calculatemilli(first:number)
+{
+this.res=first*1000;
+}
+calculatecenti(first:number)
+{
+this.res=first*100;
+}
+calculatedeci(first:number)
+{
+this.res=first*10;
+}
+calculatedeca(first:number)
+{
+this.res=first/10;
+}
+calculatehecto(first:number)
+{
+this.res=first/100;
+}
+calculatekilo(first:number)
+{
+this.res=first/1000;
+}
+}
+
+*************************************************************************************
+5.Create an Angular application.write the code to display the following 
+ "{ id: '1', firstName: 'Roshini', lastName: 'Sundar', email: 'roshini@gmail.com' },
+    { id: '2', firstName: 'Guna', lastName: 'vignesh', email: 'guna@gmail.com' },
+    { id: '3', firstName: 'hema', lastName: 'selvaraj', email: 'hema@gmail.com' },
+    { id: '4', firstName: 'safana', lastName: 'abdul', email: 'safana@gmail.com' },
+    { id: '5', firstName: 'raji', lastName: 'jayakumar', email: 'raji@gmail.com' }".
+    1.Print the above Json value in table format with id as result.
+    2.In the above Json values the firstname should be in uppercase.Given the firstname with id as firstname.
+Expected Screens:
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+<h4>User Details</h4>
+</div>
+<table class="TFtable" align="center" >
+<tr>
+<th>Id</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Email</th>
+</tr>
+<tr *ngFor="let prod of products">
+<td>{{prod.id}}</td>
+<td>{{prod.firstName}}</td>
+<td>{{prod.lastName}}</td>
+<td>{{prod.email}}</td>
+</tr>
+</table>
+
+
+app.component.ts
+export class AppComponent {
+title="Welcome to Task3"
+public products=[
+{ id: '1', firstName: 'Roshini', lastName: 'Sundar', email: 'roshini@gmail.com' },
+{ id: '2', firstName: 'Guna', lastName: 'vignesh', email: 'guna@gmail.com' },
+{ id: '3', firstName: 'hema', lastName: 'selvaraj', email: 'hema@gmail.com' },
+{ id: '4', firstName: 'safana', lastName: 'abdul', email: 'safana@gmail.com' },
+{ id: '5', firstName: 'raji', lastName: 'jayakumar', email: 'raji@gmail.com' }
+
+];
+}
+
+*************************************************************************************
+6.Create an Angular application.write the code to create the form that has 1 textbox
+1.with classname as fortextbox
+2.button as change with classname as button
+Display the given input in uppercase and lowercase output with id as uppercase and lowercase respectively.(using pipes)
+Expected Screens:
+
+
+
+app.component.html
+<div style="text-align:right">
+<h1>{{title}}</h1><br>
+</div>
+<div style="text-align:center" >
+<table border="1" width=”500”>
+<p>Type Something in the TextBox</p><br>
+<input type="text" class="ForTextBox" #text>
+<button class="button" type="submit" (click)="result(text.value)">change</button><br><br>
+<b>Uppercase pipe<br>{{res |uppercase}}</b><br>
+<br>
+<br>
+<b>LowerCase Pipe<br>{{res | lowercase}}</b>
+</table>
+</div>
+
+
+app.component.ts
+export class AppComponent {
+title="Welcome to Task5!"
+res:number;
+result(value)
+{
+this.res=value;
+}
+}
+
+*************************************************************************************
+
+7.Create an Angular application and display the title as "Welcome to Task6!".Get the today's date as input and Display
+1.Date as d/M/y format with id as result1
+2.Date as shorttime with id as result2
+Refer screenshot
+Expected Screens:
+
+
+app.component.html
+<div style="text-align:right">
+<h1>{{title}}</h1><br>
+</div>
+<div style="text-align:center" >
+<table border="1" width="500">
+<h1>Date Pipe</h1><br>
+{{today|date:'d/M/yyy'}}<br>
+{{today|date:'shortTime'}}
+</table>
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Welcome to Task6!"
+public today=new Date();
+}
+
+*************************************************************************************
+8.Create an angular application to display the entered text.
+Create a textbox with id as "values" and button with id as "addv". Display the result with id as "result" as shown in the given expected screens.
+Expected Screens:
+
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1><br>
+<h1 style="color:blue">To Do App</h1>
+<input type="text" id="values" #text>
+<button type="submit" id="addv" (click)="result(text.value)">Add</button>
+<div *ngIf="count==true" id="value">
+<li>{{res}}</li>
+</div>
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Welcome to Task8!"
+count=false;
+res:string;
+result(value)
+{
+this.res=value;
+this.count=true;
+}
+}
+
+************************************************************************************
+9.Create an angular application to display the difference based on the given inputs.
+Create 2 textboxes From and To with id as "scorefrom" and "scoreto" respectively and a button with id as "button".
+Display the result with id as "result" as shown in the given expected screens.
+Following are the criteria to display the result:
+1.If From value is greater than To value, display a message as "From value is Greater"
+2.If From value is smaller than the To value, display a message as "To value is Greater"
+3.If both the values are equal, display a message as Both values are Equal
+Expected Screens:
+
+
+
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+<h3>Check Greatest</h3><br>
+From:<input type="text" id="text1" #text1><br>
+To:<input type="text" id="text2" #text2><br>
+<button type="submit" (click)='result(text1.value,text2.value)'>Submit</button><br>
+{{res}}
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Welcome to Task9!"
+res:string="Enter Some of the Values and Press Enter";
+public result(value1,value2)
+{
+if(value1>value2)
+{
+this.res="From value is Greater";
+}
+else if(value1<value2)
+{
+this.res="To value is Greater";
+}
+else if(value1==value2)
+{
+this.res="Both values are Equal";
+}
+}
+}
+*************************************************************************************
+10.Create an angular application to display the text based on the slices.
+Create a textbox with id as "values" and a button with id as "addv".
+Display the result with id as "result"
+Note:from second value till fifth value must be sliced
+Expected Screen:
+
+
+
+app.component.ts
+export class AppComponent {
+title="Welcome to Task10!"
+count=false;
+public res=[];
+result(value)
+{
+this.res.push(value);
+this.count=true;
+}
+}
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+<h1>To Do App</h1><br>
+<input type="text" id="values" #values>
+<button id="addv" type="submit" (click)='result(values.value)'>Add</button><br>
+<li *ngFor="let i of res| slice:1:5">{{i}}</li>
+<h1>Slice Pipe</h1><br>
+<div *ngIf="count==true" id="value">
+<ul *ngFor="let i of res| slice:2:5">{{i}}</ul>
+</div>
+</div>
+********************************************************************************************
+11.Create an angular application to calculate the BMI value for the given weight and height.
+Create two textboxes with id as "height" and "weight" respectively and a button with id as "calculate".
+Display the result with id as "bmi" as shown in the ggiven expected result.
+Expected Screens:
+
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Weight in kg:<input type="text" id="weight" #text1><br><br>
+Height in cm:<input type="text" id="height" #text2><br><br>
+<Button id="calculate" (click)='bmi(text1.value,text2.value)'>Calculate</Button><br><br>
+the BMI of the given height and weight is {{res}}
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Welcome to BMI!"
+res:number;
+bmi(value1,value2)
+{
+this.res=value1/((value2/100)*(value2/100));
+}
+}
+
+*************************************************************************************
+12.Create an angular application to calculate the BMI of a person with repect to the given weight and height.
+Create two textboxes with id as "weight" and "height" respectively and a button with id as "calculate".
+Display the reult with id as "result" as shown in the given expected result. Calculate the BMI based on the following criteria:
+1. If the BMI value is between 25-29, then display as "Overweight"
+2. If the BMI value is between 30-34, then display as "Obesity with low risk"
+3. If the BMI value is between 35-39, then display as "Obesity with moderate risk"
+4. If the BMI value is above 40, then display as "High Obesity"
+Expected Screens:
+
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Weight in kg:<input type="text" id="weight" #text1><br><br>
+Height in cm:<input type="text" id="height" #text2><br><br>
+<Button id="calculate" (click)='bmi(text1.value,text2.value)'>Calculate</Button><br><br>
+the BMI of the given height and weight is {{out}}
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Welcome to BMI!"
+res:number;
+out:string;
+bmi(value1,value2)
+{
+this.res=value1/((value2/100)*(value2/100));
+if(this.res>=18 && this.res<=24.5)
+{
+this.out="Normal";
+}
+if(this.res>=25 && this.res<=29)
+{
+this.out="Overweight";
+}
+if(this.res>=30 && this.res<=34){
+this.out="Obesity with low risk";
+}
+if(this.res>=35 && this.res<=39){
+this.out="Obesity with moderate risk";
+}
+if(this.res>40){
+this.out="High Obesity";
+}
+}
+}
+*************************************************************************************
+
+
+

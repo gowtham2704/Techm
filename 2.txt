@@ -1,0 +1,92 @@
+
+
+public int Empno;
+		public String name;
+		public String city;
+		public int getEmpno() {
+			return Empno;
+		}
+		public void setEmpno(int empno) {
+			Empno = empno;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public String getCity() {
+			return city;
+		}
+		public void setCity(String city) {
+			this.city = city;
+		}
+public Employee()
+{
+	Empno=10;
+	name="toby";
+	city="chennai";
+}
+public String toString()
+{
+	return ("Name is "+name+"EmpployeeNO"+Empno+"City is"+city);
+}
+
+
+
+public class UserCode {
+	public static long find_ncr(int n, int r) {
+		long nCr= (factorial(n)/(factorial(r)*factorial(n-r)));
+		   return nCr;
+		}
+	public static long find_npr(int n, int r) {
+		long nPr =(factorial(n)/(factorial(n-r)));
+		   return nPr;
+		} 
+	public static long factorial(int n) {
+		int fact=1;
+		for(int i=1;i<=n;i++)
+		{
+			fact=fact*i;
+		} 
+		   return fact;
+		}
+}
+
+
+public class Encaps 
+{
+	private String Name;
+	private int Roll;
+	private int Age;
+	public String setName(String name) {
+		Name = name;
+		return Name;
+}
+	public int getRoll() {
+		return Roll;
+	}
+	public int getAge() {
+		return Age;
+	}
+	public String getName() {
+		return Name;
+	}
+	public int setRoll(int roll) {
+		Roll = roll;
+		return Roll;
+	}
+	public int setAge(int age) {
+		Age = age;
+		return Age;
+	}
+	public static void main(String[] args) {
+Encaps e=new Encaps();
+e.setName("a");
+e.setRoll(1);
+e.setAge(18);
+e.getAge();
+e.getRoll();
+e.getName();
+	}
+}

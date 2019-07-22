@@ -1,0 +1,103 @@
+1.select umpire_name,if(umpire_country='India','Kenya',umpire_country) from umpire
+
+
+2.select umpire_name,reverse(umpire_country) as countryname_reversed from umpire where umpire_name not like 's%'
+
+
+3.select umpire_name,umpire_country,if(umpire_country like 's%',right(umpire_country,length(umpire_country)-1),umpire_country) as countryname_new from umpire 
+
+
+4.select umpire_name,substring_index(trim(umpire_name),' ',-1) as umpirename_new,umpire_country from umpire
+
+5.
+select abs((select sum(matches_controlled) from umpire where umpire_country='South Africa')-(select sum(matches_controlled) from umpire where umpire_country='Australia')) as resultant
+
+
+6.select concat(left(tournament_name,3),'-',left(tournament_location,3)) as ticketnumber from tournament
+
+
+7.select tournament_name,if(dayname(tournament_startdate)='monday','true','false') as IsMonday from tournament
+
+
+8.select if((select umpire_country from umpire where umpire_name='Suresh Shastri')=(select umpire_country from umpire where umpire_name='Nitin Menon'),0,-1) as Country_cmp
+
+
+9.select sum(matchsummary_firstinnings+matchsummary_secondinnings) as Totalruns_Tournament from matchsummary ms join tournament t join matches m on t.tournament_id=m.tournament_id 
+and m.match_id=ms.match_id where tournament_name='Indian Premier League'
+
+
+10.select concat('In Match',match_id,' ',players_name,' ','have scored',' ',scorecard_runsscored) as details from scorecard s join players p on s.players_id=p.players_id  order by match_id
+
+
+11.select umpire_name from umpire u join tournament t join matches m on t.tournament_id=m.tournament_id and m.umpire_id=u.umpire_id where tournament_name='ICC champions trophy'
+
+12.select distinct players_name from players p join wicket w join matches m on p.players_id<=w.players_id and m.match_id=w.match_id  where players_name=(select count(wicket_taken)=7 from wicket)
+
+
+13.select p.players_name,s.match_id,scorecard_runsscored,scorecard_noofballsfaced,if(scorecard_isout=0,'out','not out') as IsOut,scorecard_batsmanorder from scorecard s join tournament t 
+join players p join matches m on t.tournament_id=m.tournament_id and m.match_id=s.match_id and p.players_id=s.players_id where tournament_name='T20 World Cup' and scorecard_runsscored<10
+
+
+14.select sum(scorecard_runsscored>=50 and scorecard_runsscored<100) as TotalCount_50s,sum(scorecard_runsscored>=100) as TotalCount_100s from scorecard 
+14.select sum(scorecard_runsscored>=50 
+and scorecard_runsscored<100) as TotalCount_50s,sum(scorecard_runsscored>=100) as TotalCount_100s from scorecard 
+
+
+15.select sum(matchsummary_firstinnings) as TotalRuns_FirstInnings from tournament t join matches m join matchsummary ms on t.tournament_id=m.tournament_id and m.match_id=ms.match_id  
+where tournament_name!='ICC Champions Trophy'
+
+
+16.select (select timestampdiff(day,tournament_startdate,tournament_enddate) from tournament where tournament_name='T20 World Cup') as totaldays,floor((select timestampdiff(day,tournament_startdate,
+tournament_enddate) from tournament where tournament_name ='T20 World Cup')/7) as weeks,ceil((select timestampdiff(day,tournament_startdate,tournament_enddate) from tournament where tournament_name =
+'T20 World Cup')/31) as days,(select tournament_startdate from tournament where tournament_name ='T20 World Cup' )as d1 ,(select tournament_enddate from tournament where tournament_name ='T20 World Cup')as
+ d2, (select tournament_location from tournament where tournament_name ='T20 World Cup')as location
+
+
+17.select coach_name as coach from coach c join scorecard s join team m on c.coach_id=m.coach_id and m.team_id=s.team_id where match_id=4 and scorecard_runsscored=110
+
+18.select players_name as NotOutPlayers from players p join tournament t join scorecard s join matches m on t.tournament_id=m.tournament_id and m.match_id=s.match_id and p.players_id=s.players_id 
+where tournament_name='Indian Premier League' and scorecard_isout=1 group by players_name
+19.select umpire_name as 'Originalname',substring(right(umpire_name,5),1,4) as sub_string  from umpire u join 
+tournament t join matches m on t.tournament_id=m.tournament_id and m.umpire_id=u.umpire_id where tournament_name='Indian Premier League' 
+
+
+20.select players_name as man_of_match,max(scorecard_runsscored) as score from scorecard s join players p join matchsummary ms on p.players_id=s.players_id and ms.match_id=s.match_id where s.match_id=1 
+and matchsummary_battingfirst!=s.team_id
+
+
+21.select group_concat('In Match',s.match_id,' ',players_name,'have scored',scorecard_runsscored) as details from scorecard s join players p  on p.players_id=s.players_id where s.match_id=1 
+and scorecard_runsscored<50 group by scorecard_runsscored desc
+
+
+22.select group_concat('In Match',match_id,' ',players_name,' ','have',' ','wicket taken',' ',wicket_taken) from players p join wicket w on p.players_id=w.players_id where wicket_taken<10 
+
+
+23.select players_name,t1.team_name as InternationalTeamName,t2.team_name as DomesticTeamName from team t1 join teammapping tm  on t1.team_id=tm.teammapping_international join team t2 on 
+t2.team_id=tm.teammapping_domestic join players p on tm.players_id=p.players_id where t1.team_country='India'
+
+
+24.select  players_name as Minwickettaker from wicket w join players p on p.players_id=w.players_id where wicket_taken>=1 group by p.players_id having sum(wicket_taken)=1
+
+
+25.select v.venue_id,m.match_id,avg(wicket_taken) as wicket_taken,avg(scorecard_runsscored) as score from scorecard s join venue v join wicket w join matches m on v.venue_id=m.venue_id 
+and m.match_id=w.match_id and m.match_id=s.match_id  where v.venue_id=10
+
+
+26.select players_name as 'Man of Match',scorecard_runsscored as score from scorecard s join matchsummary ms on s.match_id=ms.match_id join players p on s.players_id=p.players_id  
+where matchsummary_battingfirst!=s.team_id and s.match_id=7 group by p.players_id order by scorecard_runsscored desc limit 1
+
+
+27.select team_name,count(matchsummary_winningteam) as count from team t join venue v join matchsummary ms join matches m on v.venue_id=m.venue_id and  m.team1_id=t.team_id and 
+m.match_id=ms.match_id where venue_name='old trafford'
+
+
+28.select ms.match_id,team_name,abs(sum(wicket_taken)-10) ByWicketDiff  from team t join matchsummary ms  join wicket w  on  ms.matchsummary_winningteam=t.team_id and ms.match_id=w.match_id 
+and w.team_id=ms.matchsummary_battingfirst where ms.matchsummary_battingfirst!=t.team_id group by match_id
+
+
+29.select s.match_id as matches,tournament_name as tournament,max(scorecard_runsscored) as 'Max score of the match',players_name as player,team_name as Team,tournament_location as location,
+venue_name as VenueName from team t join venue v join matches m join scorecard s join players p join tournament tt on v.venue_id=m.venue_id and tt.tournament_id=m.tournament_id  and m.match_id=s.match_id 
+and  t.team_id=s.team_id and s.players_id=p.players_id  group by m.match_id  
+
+
+30.

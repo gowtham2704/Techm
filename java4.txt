@@ -1,0 +1,330 @@
+1.public static int convStringToInt(String s1) {
+	Integer result=Integer.valueOf(s1);
+		return result;
+
+	}
+
+}
+
+2.Write a program to get all the numbers from the given string and return the sum of all numbers
+
+Ex:
+Input"123gif"
+Output:6
+
+int sum = 0;
+
+		    String num = "";
+
+		    for(int i = 0; i < s.length(); i++) {
+		        if(Character.isDigit(s.charAt(i))) {
+		            num = num + s.charAt(i);
+		        } else {
+		            if(!num.equals("")) {
+		                sum = sum + Integer.parseInt(num);
+		                num = "";
+		            }
+		        }
+		    }
+
+		    return sum;
+}
+}
+
+3.public class UserCode {
+
+	public static boolean checkStringForPalindrome(String s1) {  
+		String rev= new StringBuffer(s1).reverse().toString(); 
+		    if(s1.equals(rev)){  
+		        return true;  
+		    }else{  
+		        return false;  
+		    }  
+
+	}
+
+
+}
+  5.Write a Program to replace the first and last characters of a String.  If the string contains only one character, then print the same.
+
+Ex1:
+Input1: ”Hello World”
+Out put1:dello WorlH
+
+Ex2:
+Input2: ”H”
+Output2:H
+public class UserCode {
+
+	
+
+	public static String reArrangingWord(String s) {
+		int length=s.length();
+		if(length<=1)
+		{
+			return s;
+		}
+			else
+			{
+				return s.charAt(length-1)+s.substring(1,length-1)+s.charAt(0);
+				
+			}
+		
+	}
+}
+
+
+
+4.
+
+
+
+6.Write a program to find out the digits in an array of Strings.  If the array has only digits, then print 1 else -1.
+
+Input:{"123","23.14","1" }  Output : 1
+Input:{“Abc”,123,11} Output: -1
+
+public class UserCode {
+
+	public static int checkForOnlyDigitsInArray(String s[]) {
+	 int n=0;
+	 for(int i=0;i<s.length;i++)
+	 {
+		 String s1=s[i];
+	 char a=s1.charAt(i);
+	 if(Character.isDigit(a))
+	 {
+		 n=1;
+	 }
+	 else
+	 {
+		 n=-1;
+	 }
+	 break;
+	 
+	 }
+		return n;
+	}
+}
+
+
+7.Write a Program to find the sum of the numbers in the given input string array
+
+Ex:
+Input:{“2AA”,”12”,”ABC”,”c1a”)
+Output:6(2+1+2+1)
+
+import java.util.Scanner;
+
+public class UserCode {
+	
+
+public static int getSum(String[] s1) {
+	int sum=0;
+	for(int i=0;i<s1.length;i++)
+	{
+		String s2=s1[i];
+		for(int j=0;j<s2.length();j++)
+		{
+			char c=s2.charAt(j);
+			if(Character.isDigit(c));
+			{
+				String s=String.valueOf(c);
+				sum=sum+Integer.parseInt(s);
+			}break;
+	}
+	}
+	return sum;
+}
+}
+
+
+8.Write a program to convert the 1st letter in every word to Upper Case in the given String
+Ex:
+String a="a very fine day"
+Output:A Very Fine Day
+
+String words[]=str.split("\\s");  
+    String capitalizeWord="";  
+    for(String w:words){  
+        String first=w.substring(0,1);  
+        String afterfirst=w.substring(1);  
+        capitalizeWord+=first.toUpperCase()+afterfirst+" ";  
+    }  
+    return capitalizeWord.trim();  
+}  
+}  
+
+9.Write a program validate the ip address in the form a.b.c.d where a,b,c,d must be between 0 and 255.  After successful validation, return 1, else return 2.
+StringTokenizer t=new StringTokenizer(ipAddress,".");
+int a=Integer.parseInt(t.nextToken());
+int b=Integer.parseInt(t.nextToken());
+int c=Integer.parseInt(t.nextToken());
+int d=Integer.parseInt(t.nextToken());
+if(a>=0 && a<=255) && (b>=0 && b<=255)&& (c>=0 && c<=255) && (d>=0 && d<=255))
+return 1;
+else return 2;
+}
+
+
+18.Write a Program to Compare 2 strings:
+a. If length of 2 strings are equal then concatenate the 2 strings
+b. If length of two strings are not equal then remove the extra characters from last in Largest string and append it to the Smallest string in front of it
+
+Ex1;
+input 1="hello"
+input 2="Data";
+output="odata"
+
+Ex:2
+Input 1="mine"
+input 2="hellodata"; output="odatamine"
+	int l1=ip1.length();
+        int l2=ip2.length();
+        if(l1>l2)
+        {
+        	return ip1.substring(l2,l1)+ip2;
+        }
+        if(l2>l1)
+        {
+        	return ip2.substring(l1,l2)+ip1;
+        }
+        return ip1+ip2;
+}
+	}
+} 
+
+
+14.Write a program to accept a string and remove vowels placed at even index position. 
+
+For example:
+
+User inputs “commitment” as input string.  Here, “c” is in the first index position.  If we remove the vowels at even index positions from the string then the output will be “cmmitmnt”
+StringBuffer sb1=new StringBuffer();
+                                for(int i=0;i<s1.length();i++)
+                                                if((i%2)==0)
+                                                                sb1.append(s1.charAt(i));
+                                                else if((i%2)!=0)
+                                                                if(s1.charAt(i)!='a' && s1.charAt(i)!='e' && s1.charAt(i)!='i' && s1.charAt(i)!='o' && s1.charAt(i)!='u')
+                                                                                if(s1.charAt(i)!='A' && s1.charAt(i)!='E' && s1.charAt(i)!='I' && s1.charAt(i)!='O' && s1.charAt(i)!='U')
+                                                                                 sb1.append(s1.charAt(i));
+                                return sb1.toString();
+                }
+}
+
+10.Write a Program to get the 2 inputs. Print the last characters from input1(Count is taken from input 2)
+Ex1:
+Input string:"hello", n=2
+Output:Lolo
+Ex2:
+Input string="hello", n=3
+Output : llollollo
+
+
+public class UserCode {
+
+	
+	public static String formattingOfString(String s1, int n1) {
+				String s=s1.substring(s1.length()-n1);
+					String r= new String(new char[n1]).replace("\0",s);
+					return r;
+	}
+	
+}
+
+
+15.Write a program to return the EB amount to be paid by the customer. Following inputs need to be captured from the user:
+
+Input1="abc2012345"
+Input2="abc2112660"
+Input 3=4
+a. Here "abc**" refers to customer id.
+b. 12345 refers to last month eb readind
+c. 12660 refers to this month eb reading
+
+Hint : Find the difference between two readings and multiply it by input3 and that will give the EB amount.
+import java.util.*;
+public class UserCode {
+
+	public static int meterReading(String input1, String input2, int input3) {
+		    int n1 = Integer.parseInt(input1.substring(5, input1.length()));
+		    int n2 = Integer.parseInt(input2.substring(5, input2.length()));
+		    int n = Math.abs((n2 - n1) * input3);
+		    return n;
+		  }
+	 public static void main(String[] args) {
+		    Scanner sc = new Scanner(System.in);
+		    String s1 = sc.nextLine();
+		    String s2 = sc.nextLine();
+		    int n = sc.nextInt();
+		    int n1 = meterReading(s1, s2, n);
+		    System.out.println(n1);
+		  }
+		}
+
+
+			
+12.Write a Program to find the number of days between two input dates and return the same.
+
+Input1="27/12/2009";
+Input2="15/09/2012";
+O/p : 994
+import java.text.*;
+import java.util.*;
+
+public class UserCode {
+	public static void dateDifference(String s1,String s2) throws ParseException{
+		SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
+		 try {
+		       Date dateBefore = myFormat.parse(s1);
+		       Date dateAfter = myFormat.parse(s2);
+		       long difference = dateAfter.getTime() - dateBefore.getTime();
+		       float daysBetween = (difference / (1000*60*60*24));
+		       System.out.println("Number of Days between dates: "+daysBetween);
+		 } catch (Exception e) {
+		       e.printStackTrace();
+		 }
+	}
+}
+
+
+19.public class UserCode {
+
+	public static String printingStringDependingOncharCount(String ip1, String ip2) {
+		String str1="";
+		String str2="";
+		int l1=ip1.length();
+        int l2=ip2.length();
+        if(l2==3)
+        {
+        	for(int i=0;i<3;i++)
+        	{
+        		
+        	str1=str1+ip1.charAt(i);
+        } 
+        	return str1+str1;
+        }
+        if(l2==2)
+        {
+        	for(int i=0;i<2;i++)
+        	{
+        		
+        	str2=str2+ip1.charAt(i);
+        }
+        	return str2+str2+str2;
+        }
+        else
+		return ip1+ip2;
+}  
+}
+  
+		/*
+		 * EG 1: Input1=”cowboy”; Input2="cow" Output1=”cowcow”;
+		 * 
+		 * Input1=”cowboy”; Input2=”so” output1=”cococo”;
+		 * 
+		 * HINT: if they give 3 letter word in input1 u have to display 2 time;
+		 * if they give 2 letter word in input2 u have to display 3 time; 
+		 * if they give more then 3 letter word or less than 2 letter word then concatenate two strings;
+		 * 
+

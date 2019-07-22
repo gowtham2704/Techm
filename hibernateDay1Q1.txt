@@ -1,0 +1,81 @@
+private int empno;
+	private String name;
+	private String city;
+	public Employee(int empno, String name, String city) {
+		this.empno=empno;
+		this.name=name;
+		this.city=city;
+	}
+	public int getEmpno() {
+		return empno;
+	}
+	public void setEmpno(int empno) {
+		this.empno = empno;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+}
+
+
+
+public static void main(String[] args) {
+
+	SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session s=sf.openSession();
+		Employee c=new Employee(100,"Fathi","Chennai");
+		
+		Transaction tc=s.beginTransaction();
+		s.save(c);
+		tc.commit();
+		
+		System.out.println("Done...");
+
+	
+	}
+
+	public void saveEmployee(Employee eb) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+
+<class name="com.dsrc.model.Employee" table="Employee">  
+    <id name="empid" type = "int" column = "EmpNO">  
+     <generator class="assigned"></generator>  
+    </id>              
+    <property name="firstname" column="Name" type="string"></property>  
+    <property name="lastname" column="City" type="string"></property>  
+  </class>        
+ </hibernate-mapping>  
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">  
+ <hibernate-configuration>  
+     <session-factory>  
+        <property name="hbm2ddl.auto">update</property>  
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>  
+        <property name="connection.url">jdbc:mysql://localhost:3306/myhibernate</property>  
+        <property name="connection.username">root</property>  
+        <property name="connection.password">dsrc</property>  
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
+     <mapping resource="employee.hbm.xml"/>   
+      </session-factory>  
+ </hibernate-configuration>  

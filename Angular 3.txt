@@ -1,0 +1,419 @@
+				
+1. Create an angular application with title as 'dropdown' in h1 tag.Create a dropdown list which contains a list of product names.when user clicks on the particular product, it should display the related details of that products. Display the output as shown in the expected screens.
+Expected Screens:
+
+app.component.html
+<div style="text-align:right">
+<h1>{{title}}</h1>
+</div>
+<div style="text-align:center">
+<select (change)="product($event)">select Product:
+<option>--select--</option>
+<option>Hp</option>
+<option>Dell </option>
+<option>Lenovo</option>
+</select>
+<div *ngIf="show">You have selected:{{name}} product
+<h4>Product Details</h4>
+<table class="TFtable" align="center"> 
+<tr > 
+<th>Name</th> <th>Store</th> <th>Price</th> <th>Model</th> 
+</tr> 
+<tr *ngFor="let Prod of ProductDetails"> 
+<td>{{Prod.title}}</td> 
+<td>{{Prod.store}}</td> 
+<td>{{Prod.price}}</td> 
+<td>{{Prod.model}}</td> 
+</tr> 
+</table> 
+</div>
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Welcome to dropdown-list!"
+show=false;
+name:string;
+public Products = [ 
+{Name:'Hp', title: 'HP ENVY Laptop - 15t touch', price: '1099', store: 'Best Buy', model: '15-BS013DX' }, 
+{ Name: 'Dell', title: 'Dell Laptop', price: '700', store: 'Amazon', model: 'I7378-3000SLV-PUS' }, 
+{ Name: 'Lenovo', title: 'Lenovo Touch-Screen Laptop', price: '670', store: 'Target', model: '81A40025US' }, 
+{ Name: 'Hp', title: 'HP OfficeJet Pro 6978 All-in-One Printer', price: '100', store: 'Target', model: 'T0F29A#B1H' }, 
+{ Name: 'Hp', title: 'HP Laptop - 17t touch ', price: '420', store: 'Target', model: '1EZ78AV_1' }, 
+{ Name: 'Dell', title: 'Dell - XPS 27" Touch-Screen All-In-One', price: '670', store: 'Target', model: 'BBY-311C3FX' }, 
+{ Name: 'Dell', title: 'Dell - Inspiron 21.5" Touch-Screen All-In-One', price: '469.90', store: 'Target', model: 'I3265-A067BLK-PUS' }, 
+{ Name: 'Lenovo', title: 'Lenovo - 520-24AST 23.8" Touch-Screen All-In-One', price: '679.99', store: 'Target', model: 'F0D3000EUS' }, 
+{ Name: 'Dell', title: 'Dell - XPS 2-in-1 13.3" Touch-Screen Laptop', price: '1199.99', store: 'Target', model: 'XPS9365-7086SLV-PUS' } 
+]; 
+public ProductDetails: object = []; 
+
+product(event:any)
+{
+this.show=true;
+this.name=event.target.value;
+let obj=this.Products.filter(m=>m.Name==this.name);
+this.ProductDetails=obj;
+}
+}
+*****************************************************************************************************************
+4. Create an Angular application with Service and display "Welcome to Q7!" in h1 format and "Welcome" in paragraph format.
+Expected Screens:
+**********************************
+ng generate service servicename
+**********************************
+
+welcome.service.ts
+
+import { Injectable } from '@angular/core';
+@Injectable({
+providedIn: 'root'
+})
+export class WelcomeService {
+method(){
+return "Welcome to Q7!";
+}
+}
+
+app.component.ts
+
+export class AppComponent {
+title:string;
+
+constructor(private welcome:WelcomeService)
+{}
+ngOnInit() {
+this.title = this.welcome.method();
+}
+}
+
+app.component.html
+
+<div style="text-align:left">
+<h1>{{title}}</h1>
+<p>welcome</p>
+</div>
+**********************************************************************************************
+5. Create an Angular application and create a new component as newcomponent.
+
+app.component.html
+
+<div style="text-align:right">
+<h1>
+Welcome to {{ title }}!
+</h1>
+<img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<h2>Here are some links to help you start: </h2>
+<ul>
+<li>
+<h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+</li>
+<li>
+<h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
+</li>
+<li>
+<h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+</li>
+</ul>
+<router-outlet></router-outlet>
+
+app.component.ts
+
+export class AppComponent {
+title="Welcome to Q10";
+}
+
+****************************************************************************************************
+6. Create an Angular application.Create a button as Ok with id as login
+Clicking that button should display the text "The button has been clicked 2(count of button clicked) times." with the count of button clicked.
+Refer the Screenshot.
+Expected Screens:
+
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Click the button<br><br>
+<button id="login" (click)="login()">OK</button><br>
+The button has been clicked {{count}} times
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Task 1!"
+count:number=0;
+login()
+{
+this.count++;
+}
+}
+*************************************************************
+7. Create an Angular application with the title as "Welcome to Task17!".Create two Buttons
+1.Button as True with id button1
+2.Button as False with id button2
+If we Click the True button it should display the text as "Show this only if "show" is true".If we Click the False button it should not display the above givem text.(Using ngIF)
+Expected Screens:
+
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+<button id="button1" (click)="clickme1()">True</button>
+<button id="button2" (click)="clickme2()">False</button><br>
+<div *ngIf="show" id="value"> "Show this only if "show" is true"</div>
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Welcome to Task 17!"
+show=false;
+clickme1()
+{
+this.show=true;
+}
+clickme2()
+{
+this.show=false;
+}
+}
+
+******************************************************************************
+8. Create an Angular application with the title as "Welcome to Task18!" in h1 format.Create One textbox and one button
+1.Textbox with classname as fortextbox
+2.Button with classname as button
+Find whether the given input has only alphabets or it has numbers and special characters.
+1.Given a String input for example sachin should display the text "The String contains only alphabets".
+2.Given a String input for example sachin12 should display the text "The number or special Character is present".
+3.If we doesnt give any input in the textbox it should show "Type Something in the textbox".
+Expected Screens:
+
+
+
+
+app.component.html
+<div style="text-align:center">
+<h1>{{title}}</h1>
+<input type="text" class="fortextbox" placeholder="type something" #text>
+<button id="button" (click)="clickme(text.value)">Submit</button><br>
+<div *ngIf="show">
+{{res}}
+</div>
+</div>
+
+app.component.ts
+export class AppComponent {
+title="Welcome to Task 18!"
+show=false;
+res:string;
+clickme(value)
+{ 
+var alphabet=/^[a-zA-Z]*$/;
+if(!value.match(alphabet)){
+this.res="The number or special Character is present";
+this.show=true;
+}
+if(value.match(alphabet)){
+this.res="The String contains only alphabets";
+this.show=true;
+}
+if(value.length==0)
+{
+this.res="type something in the textbox";
+}
+}
+}
+****************************************************************************************************
+9. Create an Angular application with title as "Welcome to Task19!" in h1 format.Create a form with one textbox and oen button
+1.Textbox with classname as fortextbox
+2.Button with classname as button
+Find the number of vowels in the given String in the textbox.(refer Screenshot)
+Expected Screens:
+
+
+
+app.component.html
+
+<div style="text-align:center">
+<h1>{{title}}</h1>
+<div style="text-align:left">
+Enter the String<input type="text" class="fortextbox" placeholder="type something" #text><br>
+<button id="button" (click)="clickme(text.value)">Change</button><br>
+<div *ngIf="show">
+{{res}}
+</div>
+</div>
+
+app.component.ts
+
+export class AppComponent {
+title="Welcome to Task 19!"
+show=false;
+res:any;
+clickme(value)
+{ 
+this.res=0;
+for(var i=0; i < value.length; i++){
+if(value[i] === "a" || value[i] === "e" || value[i] === "i" ||value[i] === "o" ||value[i] === "u"){
+this.res++;
+this.show=true;
+}
+}
+if(value.length==0)
+{
+this.res="type something in the textbox";
+this.show=true;
+}
+}
+}
+********************************************************************************************************
+10. Create an Angular application with the title "Welcome to Task20!" in h1 format.
+Create a form with two textboxes and one button
+1.Textbox1 with classname fortextbox
+2.Textbox2 with classname fortextbox1
+3.Button with classname button
+Find wthether the Substring(Text given in Textbox2) present in String given in Textbox1 if present display "true" else "false".
+Expected Screens:
+
+app.component.html
+
+<div style="text-align:center">
+<h1>{{title}}</h1>
+<div style="text-align:left">
+Enter the String<input type="text" class="fortextbox" placeholder="type something" #text><br>
+Enter the SubString<input type="text" class="fortextbox1" placeholder="type something" #text1><br>
+<button id="button" (click)="clickme(text.value,text1.value)">Change</button><br>
+<div *ngIf="show">
+{{res}}
+</div>
+</div>
+
+app.component.ts
+
+export class AppComponent {
+title="Welcome to Task 20!"
+show=false;
+res:any;
+clickme(value1,value2)
+{ 
+if(value1.match(value2)){
+this.res="true";
+this.show=true;
+}
+else
+this.res=false;
+if(value1.length==0 && value2.length==0)
+{
+this.res="type something in the textbox";
+this.show=true;
+}
+}
+}
+************************************************************************************************************
+11. Create an Angular application with the title as "Welcome to Task21!" in h1 format.
+Create a form with two textboxes and a button
+1.Textbox1 with classname as fortextbox.
+2.Textbox2 with classname as fortextbox1
+3.Button with classname as button
+Find the difference between the two dates given as input for textbox1 and textbox2.(Refer Screenshot)
+
+app.component.html
+
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Enter the First date<input type="text" class="fortextbox" placeholder="dd/mm/yyyy" #text><br>
+Enter the Second date<input type="text" class="fortextbox1" placeholder="dd/mm/yyyy" #text1><br>
+<button id="button" (click)="clickme(text.value,text1.value)">Change</button><br><br>
+<div *ngIf="show">
+{{res}}
+</div>
+</div>
+
+app.component.ts
+
+export class AppComponent {
+title="Welcome to Task21!"
+show=false;
+res:any;
+clickme(value1,value2)
+{ 
+this.res=0;
+const startdate=new Date(value1);
+const enddate=new Date(value2);
+var diff = Math.abs((startdate.valueOf() - enddate.valueOf())/(24*60*60*1000));
+this.res=diff;
+this.show=true;
+if(value1.length==0 &&value2.length==0)
+{
+this.res="Type Something";
+}
+}
+}
+**************************************************************************************************************
+12. Create an angular application with title as 'task22' in h1 tag.Create two textboxes with id 
+as textbox1 and textbox2 respectively.Create two buttons with id as button1 and button2 and 
+show the result as in expected screens.
+
+app.component.html
+
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Enter Number<input type="text" id="textbox1" #textbox1><br>
+Enter Number<input type="text" id="textbox2" #textbox2><br><br>
+<button id="button1" (click)="clickme1(textbox1.value,textbox2.value)">AND</button>
+<button id="button2" (click)="clickme2(textbox1.value,textbox2.value)">OR</button>
+{{res}}
+</div>
+
+app.component.ts
+
+export class AppComponent {
+title="Welcome to Task22!"
+res:any;
+clickme1(value1,value2)
+{ 
+this.res=value1*value2;
+if(value1>=2 || value2>=2)
+{
+this.res="enter a valid number";
+}
+}
+clickme2(value1,value2)
+{ 
+this.res=+value1 + +value2;
+if(value1>=2 || value2>=2)
+{
+this.res="enter a valid number";
+}
+if(value1==value2)
+{
+this.res=value1;
+}
+}
+}
+
+******************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

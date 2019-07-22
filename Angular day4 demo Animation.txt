@@ -1,0 +1,30 @@
+Animation 
+
+<div style="text-align: center">
+  <button (click)='animate()'>Click Me</button>
+  <p [@MyAnimation]="state">LOOK ME</p>
+</div>
+
+import { trigger,state,style,transition,animate} from '@angular/animations';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  animations:[
+    trigger('MyAnimation',[
+      state('smaller',style({
+        transform:'scale(1)'
+      })),
+      state('larger',style({
+        transform:'scale(3)'
+      })),
+      transition('smaller<=>larger',animate('300ms ease-in'))
+    ])
+  ] 
+})
+export class AppComponent {
+  state:string='smaller';
+  animate(){
+    this.state=this.state=='larger'?'smaller':'larger';
+  }
+}
